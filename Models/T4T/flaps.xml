@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>Aircraft/Spitfire/Models/flaps.ac</path>
+
+	<animation>
+		<type>pick</type>
+		<visible>false</visible>
+		<object-name>Pick-Up</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>/fdm/jsbsim/flap/position-cmd</property>
+				<step>-1</step>
+				<min>0</min>
+				<max>2</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<visible>false</visible>
+		<object-name>Pick-Down</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>/fdm/jsbsim/flap/position-cmd</property>
+				<step>1</step>
+				<min>0</min>
+				<max>2</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Handle</object-name>
+		<property>/fdm/jsbsim/flap/position-cmd</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>2</ind>
+				<dep>180</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>0.0180684</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<condition>
+			<greater-than>
+				<property>/controls/lighting/panel-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<emission>
+			<factor-prop>/controls/lighting/panel-norm</factor-prop>
+			<red>0.75</red>
+			<green>0.25</green>
+			<blue>0.25</blue>
+		</emission>
+	</animation>
+
+	<!-- *** LoD *** -->
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

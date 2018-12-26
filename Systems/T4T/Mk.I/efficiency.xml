@@ -1,0 +1,857 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="damage_test">
+
+	<channel name="lift efficiency">
+ 
+	<!-- #### left #### -->	
+	
+
+	<fcs_function name="T4T/aero/wing_left/_1_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_1_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9837
+					0.00	1.00
+					0.1745	0.9837
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>
+	<fcs_function name="T4T/aero/wing_left/_1_CN_efficiency">
+		<function>	
+			<product>		
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_1_sweep</property>
+				<property>T4T/damage/wing_left_1</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/wing_left/_2_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_2_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9817
+					0.00	1.00
+					0.1745	0.9884
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/damage/wing_left_2"/>
+		<test value="0">
+			T4T/damage/wing_left_1 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_2</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_2_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_2_sweep</property>
+				<property>T4T/damage/wing_left_2</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_3_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_3_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9781
+					0.00	1.00
+					0.1745	0.9939
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_left_3"/>
+		<test value="0">
+			T4T/damage/wing_left_2 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_3</output>	
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_3_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_3_sweep</property>
+				<property>T4T/damage/wing_left_3</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_left/_4_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_4_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9675		
+					0.00	1.00
+					0.1745	1.0028			
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>		
+	<switch>
+		<default value="T4T/damage/wing_left_4"/>
+		<test value="0">
+			T4T/damage/wing_left_3 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_4</output>			
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_4_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_4_sweep</property>
+				<property>T4T/damage/wing_left_4</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_5_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_5_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9575
+					0.00	1.00
+					0.1745	1.0106
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/damage/wing_left_5"/>
+		<test value="0">
+			T4T/damage/wing_left_4 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_5</output>			
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_5_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_5_sweep</property>
+				<property>T4T/damage/wing_left_5</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_left/_6_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_6_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9513
+					0.00	1.00
+					0.1745	1.0329
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_left_6"/>
+		<test value="0">
+			T4T/damage/wing_left_5 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_6</output>			
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_6_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_6_sweep</property>
+				<property>T4T/damage/wing_left_6</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_left/_7_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_7_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9345
+					0.00	1.00
+					0.1745	1.0415		
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/damage/wing_left_7"/>
+		<test value="0">
+			T4T/damage/wing_left_6 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_7</output>			
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_7_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_7_sweep</property>
+				<property>T4T/damage/wing_left_7</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_left/_8_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_8_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9009
+					0.00	1.00
+					0.1745	1.0587
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_left_8"/>
+		<test value="0">
+			T4T/damage/wing_left_7 EQ 0
+		</test>
+		<output>T4T/damage/wing_left_8</output>			
+	</switch>	
+	<fcs_function name="T4T/aero/wing_left/_8_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_left/_8_sweep</property>
+				<property>T4T/damage/wing_left_8</property>
+			</product>
+		</function>
+	</fcs_function>	
+	
+	<!-- #### right #### -->
+
+	<fcs_function name="T4T/aero/wing_right/_1_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_1_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9837
+					0.00	1.00
+					0.1745	0.9837
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+		
+	<fcs_function name="T4T/aero/wing_right/_1_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_1_sweep</property>
+				<property>T4T/damage/wing_right_1</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_2_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_2_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9884
+					0.00	1.00
+					0.1745	0.9817
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_right_2"/>
+		<test value="0">
+			T4T/damage/wing_right_1 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_2</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_2_CN_efficiency">
+		<function>	
+			<product>			
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_2_sweep</property>
+				<property>T4T/damage/wing_right_2</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_3_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_3_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9939
+					0.00	1.00
+					0.1745	0.9781
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>		
+	<switch>
+		<default value="T4T/damage/wing_right_3"/>
+		<test value="0">
+			T4T/damage/wing_right_2 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_3</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_3_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_3_sweep</property>
+				<property>T4T/damage/wing_right_3</property>
+			</product>
+		</function>
+	</fcs_function>		
+
+	<fcs_function name="T4T/aero/wing_right/_4_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_4_beta-rad</independentVar>
+				<tableData>
+					-0.1745	1.0028
+					0.00	1.00
+					0.1745	0.9675
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>		
+	<switch>
+		<default value="T4T/damage/wing_right_4"/>
+		<test value="0">
+			T4T/damage/wing_right_3 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_4</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_4_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_4_sweep</property>
+				<property>T4T/damage/wing_right_4</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_right/_5_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_5_beta-rad</independentVar>
+				<tableData>
+					-0.1745	1.0106
+					0.00	1.00
+					0.1745	0.9575
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_right_5"/>
+		<test value="0">
+			T4T/damage/wing_right_4 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_5</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_5_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_5_sweep</property>
+				<property>T4T/damage/wing_right_5</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_6_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_6_beta-rad</independentVar>
+				<tableData>
+					-0.1745	1.0329
+					0.00	1.00
+					0.1745	0.9513
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_right_6"/>
+		<test value="0">
+			T4T/damage/wing_right_5 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_6</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_6_CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_6_sweep</property>
+				<property>T4T/damage/wing_right_6</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/wing_right/_7_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_7_beta-rad</independentVar>
+				<tableData>
+					-0.1745	1.0415
+					0.00	1.00
+					0.1745	0.9345
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_right_7"/>
+		<test value="0">
+			T4T/damage/wing_right_6 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_7</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_7_CN_efficiency">
+		<function>	
+			<product>	
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_7_sweep</property>
+				<property>T4T/damage/wing_right_7</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/wing_right/_8_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_8_beta-rad</independentVar>
+				<tableData>
+					-0.1745	1.0587
+					0.00	1.00
+					0.1745	0.9009
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<switch>
+		<default value="T4T/damage/wing_right_8"/>
+		<test value="0">
+			T4T/damage/wing_right_7 EQ 0
+		</test>
+		<output>T4T/damage/wing_right_8</output>		
+	</switch>	
+	<fcs_function name="T4T/aero/wing_right/_8_CN_efficiency">
+		<function>	
+			<product>	
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/aero/wing_right/_8_sweep</property>			
+				<property>T4T/damage/wing_right_8</property>
+			</product>
+		</function>
+	</fcs_function>	
+	
+	<!-- #### tail #### -->
+	
+	<fcs_function name="T4T/aero/v-stab/CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/lift_efficiency</property>
+				<property>T4T/damage/v-stab</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	
+	<fcs_function name="T4T/aero/h-stab_left/_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_left/_1_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9824
+					0.00	1.00
+					0.1745	0.9899
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<fcs_function name="T4T/aero/h-stab_left/CN_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/h-stab_efficiency</property>
+				<property>T4T/aero/h-stab_left/_sweep</property>
+				<property>T4T/damage/h-stab_left</property>	
+			</product>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/aero/h-stab_right/_sweep">
+		<function>
+			<table>
+				<independentVar>T4T/aero/wing_right/_1_beta-rad</independentVar>
+				<tableData>
+					-0.1745	0.9899
+					0.00	1.00
+					0.1745	0.9824
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>	
+	<fcs_function name="T4T/aero/h-stab_right/CN_efficiency">
+		<function>	
+			<product>	
+				<property>T4T/metrics/h-stab_efficiency</property>
+				<property>T4T/aero/h-stab_right/_sweep</property>
+				<property>T4T/damage/h-stab_right</property>
+			</product>
+		</function>
+	</fcs_function>		
+
+
+	</channel>
+		
+	<channel name="drag efficiency">
+	
+	<fcs_function name="T4T/aero/wing_left/_1_CA_efficiency">
+		<function>	
+			<product>		
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_1_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_1_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_1 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_1_CA_efficiency </output>
+	</switch>
+		
+	<fcs_function name="T4T/aero/wing_left/_2_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_2_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_2_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_2 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_2_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_left/_3_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_3_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_3_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_3 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_3_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_left/_4_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_4_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_4_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_4 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_4_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_left/_5_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_5_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_5_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_5 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_5_CA_efficiency </output>
+	</switch>
+
+	<fcs_function name="T4T/aero/wing_left/_6_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_6_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_6_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_6 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_6_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_left/_7_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_7_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_7_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_7 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_7_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_left/_8_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_left/_8_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_left/_8_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_left_8 EQ 0
+		</test>
+		<output> T4T/aero/wing_left/_8_CA_efficiency </output>
+	</switch>	
+	
+	
+	<!-- #### right #### -->	
+	
+	<fcs_function name="T4T/aero/wing_right/_1_CA_efficiency">
+		<function>	
+			<product>		
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_1_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_1_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_1 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_1_CA_efficiency </output>
+	</switch>
+		
+	<fcs_function name="T4T/aero/wing_right/_2_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_2_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_2_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_2 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_2_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_right/_3_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_3_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_3_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_3 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_3_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_right/_4_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_4_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_4_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_4 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_4_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_right/_5_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_5_sweep</property>>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_5_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_5 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_5_CA_efficiency </output>
+	</switch>
+
+	<fcs_function name="T4T/aero/wing_right/_6_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_6_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_6_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_6 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_6_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_right/_7_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_7_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_7_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_7 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_7_CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/wing_right/_8_CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/wing_right/_8_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/wing_right/_8_CA_efficiency"/>
+		<test value="0">
+			T4T/damage/wing_right_8 EQ 0
+		</test>
+		<output> T4T/aero/wing_right/_8_CA_efficiency </output>
+	</switch>	
+	
+
+	<!-- #### tail #### -->	
+
+	<fcs_function name="T4T/aero/v-stab/CA_efficiency">
+		<function>	
+			<property>T4T/metrics/drag_efficiency</property>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/v-stab/CA_efficiency"/>
+		<test value="0">
+			T4T/damage/v-stab EQ 0
+		</test>
+		<output> T4T/aero/v-stab/CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/h-stab_left/CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/h-stab_left/_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/h-stab_left/CA_efficiency"/>
+		<test value="0">
+			T4T/damage/h-stab_left EQ 0
+		</test>
+		<output> T4T/aero/h-stab_left/CA_efficiency </output>
+	</switch>
+	
+	<fcs_function name="T4T/aero/h-stab_right/CA_efficiency">
+		<function>	
+			<product>
+				<property>T4T/metrics/drag_efficiency</property>
+				<property>T4T/aero/h-stab_right/_sweep</property>
+			</product>
+		</function>
+	</fcs_function>
+	<switch>
+		<default value="T4T/aero/h-stab_right/CA_efficiency"/>
+		<test value="0">
+			T4T/damage/h-stab_right EQ 0
+		</test>
+		<output> T4T/aero/h-stab_right/CA_efficiency </output>
+	</switch>	
+	
+	</channel>	
+
+</system>

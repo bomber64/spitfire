@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!--
+
+Based on tables from JavaProp.
+
+
+ -->
+
+<propeller name="3 blade 2 pitch metal prop for spitfire">
+
+	<!-- 
+	<ixx> is the rotational moment of inertia for the propeller/engine combination.
+	Small numbers accelerate faster but bounce around more. Large numbers
+	accelerate slower and regulate smoother.
+	
+	 I = m*D^2/12
+	 
+	 m=156.8kg
+	 d=2.77
+	-->
+	
+	<ixx unit="SLUG*FT2"> 73.8 </ixx> 	<!-- 100 kgm2 use in engine system for precession	-->
+	
+	<!-- 
+	Prop Characteristics
+	-->
+	
+	<diameter unit="IN">109 </diameter>
+	<numblades> 3 </numblades>
+	<constspeed> 0 </constspeed>
+	
+	<!-- 
+	<gearratio> is the gearing between the prop and the engine,
+	Normally it's defined from the engine to the propeller and is a value below zero
+	ie 0.477
+	To specify from the propeller to the engine use 1/X = gearration = 1/0.477 = 2.09
+	-->
+	
+	<gearratio>2.09</gearratio>
+	
+	<!-- 
+	<minpitch> is the Prop min AoA setting
+	<maxpitch> is the Prop max AoA setting
+	-->
+	<minpitch>32.5</minpitch>
+	<maxpitch>45.75</maxpitch>
+	
+	<!--
+	Set the minrpm of the propeller to the props min rpm*engine to prop gearratio.
+		1800*0.477 = 859
+	This means the propeller will not try to slow the engine below that point.
+	
+	<maxrpm> is the Prop Govenors max setting
+	-->
+	<minrpm>859</minrpm>
+	<maxrpm>1431</maxrpm>
+	
+	<!-- 
+	<ct_factor> is the props co-efficent of thrust 'tuning' factor
+	<cp_factor> is the props co-efficent of power 'tuning' factor
+	-->
+	<ct_factor> 1.0 </ct_factor>
+	<cp_factor> 1.0 </cp_factor>
+ 
+	<table name="C_THRUST" type="internal">
+		<tableData>
+			32.5			45.75
+	0		0.175263		0.18349
+	0.1		0.177149		0.164307
+	0.2		0.177333		0.17332
+	0.3		0.174659		0.179002
+	0.4		0.172071		0.182809
+	0.5		0.168229		0.184103
+	0.6		0.162678		0.185092
+	0.7		0.155482		0.184758
+	0.8		0.14503			0.183536
+	0.9		0.132411		0.181629
+	1		0.112042		0.179245
+	1.1		0.087537		0.178193
+	1.12	0.082485		0.1780622
+	1.14	0.077436		0.1779314
+	1.16	0.072345		0.1778006
+	1.18	0.067237		0.1776698
+	1.2		0.062049		0.177539
+	1.22	0.056835		0.1774552
+	1.24	0.051618		0.1773714
+	1.26	0.046327		0.1772876
+	1.28	0.041013		0.1772038
+	1.3		0.035661		0.17712
+	1.32	0.030249		0.1764016
+	1.34	0.024829		0.1756832
+	1.36	0.019407		0.1749648
+	1.38	0.013882		0.1742464
+	1.4		0.008322		0.173528
+	1.42	0.002733		0.172401
+	1.44	-0.002802		0.171274
+	1.46	-0.008529		0.170147
+	1.48	-0.014264		0.16902
+	1.5		-0.020101		0.167893
+	1.52	-0.025825		0.1617125
+	1.6		-0.07186875		0.155532
+	1.7		-0.1179125		0.137022
+	1.8		-0.16395625		0.115985
+	2.44	-0.21			-0.030246
+
+		</tableData>
+	</table>
+
+	<table name="C_POWER" type="internal">
+		<tableData>
+			32.5			45.75
+	0		0.185903		0.341332
+	0.1		0.19236			0.340586
+	0.2		0.190113		0.347393
+	0.3		0.186858		0.353516
+	0.4		0.184883		0.35448
+	0.5		0.18285			0.35064
+	0.6		0.182638		0.345711
+	0.7		0.182461		0.340794
+	0.8		0.180051		0.336969
+	0.9		0.171391		0.334603
+	1		0.156868		0.333987
+	1.1		0.135291		0.330623
+	1.12	0.130434		0.3306672
+	1.14	0.125459		0.3307114
+	1.16	0.120309		0.3307556
+	1.18	0.115017		0.3307998
+	1.2		0.109496		0.330844
+	1.22	0.103816		0.3315642
+	1.24	0.098003		0.3322844
+	1.26	0.091972		0.3330046
+	1.28	0.08578			0.3337248
+	1.3		0.079411		0.334445
+	1.32	0.072835		0.3352028
+	1.34	0.06612			0.3359606
+	1.36	0.059277		0.3367184
+	1.38	0.052172		0.3374762
+	1.4		0.044895		0.338234
+	1.42	0.037444		0.3374942
+	1.44	0.029931		0.3367544
+	1.46	0.022016		0.3360146
+	1.48	0.013942		0.3352748
+	1.5		0.00558			0.334535
+	1.52	-0.002761		0.329547
+	1.6		-0.08207075		0.324559
+	1.7		-0.1613805		0.302639
+	1.8		-0.24069025		0.273357
+	2.44	-0.32			-0.006342
+		</tableData>
+	</table>
+	
+	<!-- thrust effects of helical tip Mach -->
+	<table name="CT_MACH" type="internal">
+		<tableData>
+			0.85   1.0
+			1.05   0.8
+		</tableData>
+	</table>
+
+	<!-- power-required effects of helical tip Mach -->
+	<table name="CP_MACH" type="internal">
+		<tableData>
+			0.85   1.0
+			1.05   1.8
+		</tableData>
+	</table>
+
+</propeller>

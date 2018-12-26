@@ -1,0 +1,1239 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="T4T-Spitfire_MkI (JSBSim)" version="1.0" release="BETA"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+    <fileheader>
+        <author>Simon 'bomber' Morley</author>
+        <filecreationdate> 2017-10-26 </filecreationdate>
+        <version> $Revision: 1.0 $ </version>
+        <description>Although it was only a front line fighter for eighteen months, the Spitfire I earned one of the most enduring reputations of any aircraft </description>
+    </fileheader>
+
+    <metrics>
+        <wingspan unit="FT"> 36.9 </wingspan>	
+		<wingarea unit="FT2"> 244.7 </wingarea>
+		<chord unit="FT"> 7.4 </chord> <!-- @ 50% ft-->
+
+		<property value="5.56">T4T/metrics/wing_aspect</property> <!-- wingsspan2 / Area -->
+		<property value="3.14">T4T/metrics/h-stab_aspect</property> <!-- wingsspan2 / Area -->
+		
+		<htailarea unit="FT2">36</htailarea>
+		<htailarm  unit="FT">14.44</htailarm>
+
+		<vtailarea unit="FT2">18.5</vtailarea>
+		<vtailarm  unit="FT" >14.67</vtailarm>
+		
+		<property value="1">T4T/metrics/ground_effect</property> <!-- 1 = on. 0 = off -->		
+		
+ 		<property value="18000">T4T/metrics/wingload_max-lbs</property> <!-- lbs max load * Gmax (6) / 2-->
+		<property value="0.25">T4T/metrics/wing_flex_downward-deg</property> <!-- flex per section at - wingload max -->
+		<property value="0.5">T4T/metrics/wing_flex_upward-deg</property> <!-- flex per section at + wingload max -->	
+
+		<property value="9.45">T4T/metrics/aileron-sqft</property> <!-- sqft -->
+		<property value="0.61">T4T/metrics/aileron_trim-sqft</property> <!-- sqft -->
+		<property value="5.5">T4T/metrics/aileron_downward-deg</property> <!-- change in wing incidence with aileron fully downward -->
+		<property value="-3.8">T4T/metrics/aileron_upward-deg</property> <!-- change in wing incidence with aileron fully upward -->		
+		<property value="0.341">T4T/coefficients/aileron-heaviness</property> <!-- 0.11 -->
+		
+		<property value="7.1">T4T/metrics/elevator-sqft</property> <!-- sqft -->
+		<property value="0.84">T4T/metrics/elevator_trim-sqft</property> <!-- sqft -->
+		<property value="9.6">T4T/metrics/elevator_downward-deg</property> <!-- change in h-stab incidence with aileron fully downward -->
+		<property value="-11.7">T4T/metrics/elevator_upward-deg</property> <!-- change in h-stab incidence with aileron fully upward -->
+
+		
+		<property value="8.7">T4T/metrics/rudder-sqft</property> <!-- sqft -->
+		<property value="0.35">T4T/metrics/rudder_trim-sqft</property> <!-- sqft -->
+		<property value="13.4">T4T/metrics/rudder_sideway-deg</property> <!-- change in v-stab incidence with rudder fully deployed -->
+		
+		<property value="7.8">T4T/metrics/flap-sqft</property> <!-- sqft -->		
+		<property value="7.7">T4T/metrics/flap_downward-deg</property> <!-- change in wing incidence with flap fully deployed -->		
+		
+		<property value="11.9">T4T/metrics/fuselage_front-sqft</property> <!-- sqft -->
+		<property value="98.25">T4T/metrics/fuselage_side-sqft</property> <!-- sqft -->
+		<property value="62.7">T4T/metrics/fuselage_plan-sqft</property> <!-- sqft -->
+		<property value="2.3">T4T/metrics/gear_front-sqft</property> <!-- sqft -->
+		<property value="9.5">T4T/metrics/gear_side-sqft</property> <!-- sqft -->
+		
+		<property value="0.105">T4T/metrics/front_drag-coefficient</property> <!-- 3) Adjust to airfoil https://www.grc.nasa.gov/www/k-12/airplane/shaped.html -->
+		<property value="1.0">T4T/metrics/plan_drag-coefficient</property> <!-- 3) Adjust to airfoil https://www.grc.nasa.gov/www/k-12/airplane/shaped.html -->
+		<property value="1.0">T4T/metrics/side_drag-coefficient</property> <!-- 3) Adjust to bullet  https://www.grc.nasa.gov/www/k-12/airplane/shaped.html -->
+		
+ 		<property value="1.335">T4T/metrics/h-stab_efficiency</property>						
+ 		<property value="1.335">T4T/metrics/lift_efficiency</property> <!-- 1)  Adjust Lift Modifier to give aprox 6017lb lift at stall speed of 67kts max A0A with h-stab incidence adjusted to CoG -->
+ 		<property value="0.39">T4T/metrics/drag_efficiency</property> <!-- 4) Adjust Drag Modifier so to give 100ftsec = 60.2lbs drag (at max speed 260kts = 651lbs drag) -->
+		
+		<!--		
+			In the structural frame the X-axis increases from the nose towards the tail, the Y-axis increases from the fuselage
+			out towards the right (when looking forward from the cockpit), and of course the Z-axis then is positive upwards. 
+		-->
+    </metrics>
+
+    <mass_balance>
+
+	<!-- #### TARE WEIGHT #### -->		
+	<!-- #### FUSELAGE #### -->	
+	<!-- #### Fore #### -->		
+		<pointmass name="fuselage_for"> <!-- 0 -->
+            <weight unit="LBS"> 85 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.91 </x>
+                <z> -0.3 </z>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/fuselage_for </property>
+
+		<pointmass name="prop"> <!-- 1 -->
+            <weight unit="LBS"> 345 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -11.61 </x>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/prop </property>
+
+		<pointmass name="engine"> <!-- 2 -->
+            <weight unit="LBS"> 1412 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -8.43 </x>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/engine </property>
+
+		<pointmass name="engine_accessories"> <!-- 3 -->
+            <weight unit="LBS"> 61 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.97 </x>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/engine_accessories </property>
+
+		<pointmass name="ejector_exhausts"> <!-- 4 -->
+            <weight unit="LBS"> 30 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -8.43 </x>
+            </location>
+       	</pointmass>
+		
+		<pointmass name="oil_tank"> <!-- 5 -->
+            <weight unit="LBS"> 47 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -9.12 </x>
+                <z> -1.77 </z>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/oil_tank </property>
+		
+		<pointmass name="un-usable-oil"> <!-- 6 -->
+            <weight unit="LBS"> 10 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -9.12 </x>
+                <z> -1.77 </z>
+            </location>
+       	</pointmass>
+		
+		<pointmass name="glycol_coolant"> <!-- 7 -->
+            <weight unit="LBS"> 142 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -10.4 </x>
+            </location>
+       	</pointmass>
+		
+		<pointmass name="ballast_weight-fore"> <!-- 8 -->
+            <weight unit="LBS"> 106.32 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.38 </x>
+            </location>
+       	</pointmass>
+		
+<!-- #### Mid #### -->
+			
+		<pointmass name="fuselage_mid"> <!-- 9 -->
+            <weight unit="LBS"> 551 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.64 </x>
+                <z> -0.56 </z>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/fuselage_mid </property>
+		
+		<pointmass name="controls_pilot"> <!-- 10 -->
+            <weight unit="LBS"> 91 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.64 </x>
+                <z> 1.21 </z>
+            </location>
+        </pointmass>
+		<property value="1"> T4T/damage/controls_pilot </property>
+		<pointmass name="pilot_seat"> <!-- 11 -->
+            <weight unit="LBS"> 23 </weight>
+            <location name="POINTMASS" unit="FT">
+            </location>
+        </pointmass>
+		<pointmass name="armour"> <!-- 12 -->
+            <weight unit="LBS"> 6 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 1.64 </x>
+                <z> 2.07 </z>
+            </location>
+        </pointmass>
+		
+		<pointmass name="fuel_tank-top"> <!-- 13 -->
+            <weight unit="LBS"> 28.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -3.61 </x>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/fuel-tank[2] </property>
+		<pointmass name="fuel_tank-bottom"> <!-- 14 -->
+            <weight unit="LBS"> 28.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -3.61 </x>
+                <z> -1.64 </z>
+            </location>
+       	</pointmass> 
+		<property value="1"> T4T/damage/fuel-tank[1] </property>
+
+	<!-- #### Aft #### -->
+		<pointmass name="fuselage_aft"> <!-- 15 -->
+            <weight unit="LBS"> 240.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 5.41 </x>
+                <z> -0.1 </z>
+            </location>
+        </pointmass>
+		<property value="1"> T4T/damage/fuselage_aft </property>
+		
+		<pointmass name="tail-wheel"> <!-- 16 -->
+            <weight unit="LBS"> 28 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 14.76 </x>
+                <z> -1.35 </z>
+            </location>
+        </pointmass>		
+			
+<!-- #### WINGS #### -->
+	<!-- #### left #### -->
+
+		<pointmass name="wing_left_1"> <!-- 17 WING ROOT -->
+            <weight unit="LBS"> 75.95 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> -1.05 </y>
+                <z> -2.21 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_left_1 </property>
+			<property value="-5.22" unit="FT"> T4T/structure/wing/_1_x </property>
+			<property value="1.05" unit="FT"> T4T/structure/wing/_1_y </property>
+			<property value="16.37" unit="FT2"> T4T/structure/wing/_1_area-sqft </property>
+			<property value="2.0" unit="DEG"> T4T/structure/wing/_1_rigging-deg </property> <!-- actual rigging angle -->
+			<property value="3.0" unit="DEG"> T4T/structure/wing/_1_dihedral-deg </property> <!-- 3.0 -->
+
+		<pointmass name="wing_left_2"> <!-- 18 -->
+            <weight unit="LBS"> 72.554 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> -3.15 </y>
+                <z> -2.02 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_left_2 </property>
+			<property value="-5.22" unit="FT"> T4T/structure/wing/_2_x </property>
+			<property value="3.15" unit="FT"> T4T/structure/wing/_2_y </property>
+			<property value="17.5" unit="FT2"> T4T/structure/wing/_2_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_2_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_2_dihedral-deg </property> <!-- 0.0 -->
+
+		<pointmass name="wing_left_3"> <!-- 19 -->
+            <weight unit="LBS"> 67.748 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> -5.28 </y>
+                <z> -1.83 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_left_3 </property>
+			<property value="-5.22" unit="FT"> T4T/structure/wing/_3_x </property>
+			<property value="5.28" unit="FT"> T4T/structure/wing/_3_y </property>
+			<property value="17.25" unit="FT2"> T4T/structure/wing/_3_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_3_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_3_dihedral-deg </property> <!-- 0.0 -->
+			
+		<pointmass name="wing_left_4"> <!-- 20 BOTTOM WING TIP -->
+            <weight unit="LBS"> 80.535 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> -7.74 </y>
+                <z> -1.6 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_left_4 </property>
+			<property value="-5.22" unit="FT"> T4T/structure/wing/_4_x </property>
+			<property value="7.74" unit="FT"> T4T/structure/wing/_4_y </property>
+			<property value="20.7" unit="FT2"> T4T/structure/wing/_4_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_4_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_4_dihedral-deg </property> <!-- 0.0 -->
+	
+		<pointmass name="wing_left_5"> <!-- 21 -->
+            <weight unit="LBS"> 50.971 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> -10.3 </y>
+                <z> -1.37 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_left_5 </property>
+			<property value="-5.22" unit="FT"> T4T/structure/wing/_5_x </property>
+			<property value="10.3" unit="FT"> T4T/structure/wing/_5_y </property>
+			<property value="16.2" unit="FT2"> T4T/structure/wing/_5_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_5_rigging-deg </property> <!-- actual rigging angle -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_5_dihedral-deg </property> <!-- 0.0 -->
+
+		<pointmass name="wing_left_6"> <!-- 22 -->
+            <weight unit="LBS"> 36.817 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.18 </x>
+                <y> -12.6 </y>
+                <z> -1.16 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_left_6 </property>
+			<property value="-5.18" unit="FT"> T4T/structure/wing/_6_x </property>
+			<property value="12.6" unit="FT"> T4T/structure/wing/_6_y </property>
+			<property value="14.1" unit="FT2"> T4T/structure/wing/_6_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_6_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_6_dihedral-deg </property> <!-- 0.0 -->
+
+		<pointmass name="wing_left_7"> <!-- 23 -->
+            <weight unit="LBS"> 21.848 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.09 </x>
+                <y> -14.86 </y>
+                <z> -0.96 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_left_7 </property>
+			<property value="-5.09" unit="FT"> T4T/structure/wing/_7_x </property>
+			<property value="14.86" unit="FT"> T4T/structure/wing/_7_y </property>
+			<property value="11.1" unit="FT2"> T4T/structure/wing/_7_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_7_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_7_dihedral-deg </property> <!-- 0.0 -->
+
+
+		<pointmass name="wing_left_8"> <!-- 24 WING TIP -->
+            <weight unit="LBS"> 3.638 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -17.22 </y>
+                <z> -0.74 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_left_8 </property>
+			<property value="-4.86" unit="FT"> T4T/structure/wing/_8_x </property>
+			<property value="17.22" unit="FT"> T4T/structure/wing/_8_y </property>
+			<property value="6.25" unit="FT2"> T4T/structure/wing/_8_area-sqft </property>
+			<property value="-0.357" unit="DEG"> T4T/structure/wing/_8_rigging-deg </property> <!-- rigging angle adjustment -->
+			<property value="0.0" unit="DEG"> T4T/structure/wing/_8_dihedral-deg </property> <!-- 0.0 -->
+
+		<pointmass name="gear_left"> <!-- 25 -->
+			<weight unit="LBS"> 118 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -3.5 </x> <!-- -5.25 -->
+                <y> -5.14 </y> <!-- -2.99 -->
+                <z> -1.9 </z> <!-- -5.5 -->
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/gear_left </property>
+			<property value="-5.25" unit="FT"> T4T/structure/gear/_x </property>				
+			<property value="-5.3" unit="FT"> T4T/structure/gear/_z </property>			
+			
+		<pointmass name="oil_radiator"> <!-- 26 -->
+			<weight unit="LBS"> 56 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.8 </x>
+                <y> -3.41 </y>
+                <z> -3.02 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/oil_radiator </property>
+			
+		<pointmass name="ballast_weight-left_wing"> <!-- 27 -->
+            <weight unit="LBS"> 10.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -17.22 </y>
+                <z> -0.74 </z>
+            </location>
+       	</pointmass>
+
+	<!-- #### right #### -->
+
+		<pointmass name="wing_right_1"> <!-- 28 WING ROOT -->
+            <weight unit="LBS"> 75.95 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> 1.05 </y>
+                <z> -2.21 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_right_1 </property>
+
+		<pointmass name="wing_right_2"> <!-- 29 -->
+            <weight unit="LBS"> 72.554 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> 3.15 </y>
+                <z> -2.02 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_right_2 </property>
+
+		<pointmass name="wing_right_3"> <!-- 30 -->
+            <weight unit="LBS"> 67.748 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> 5.28 </y>
+                <z> -1.83 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_right_3 </property>
+			
+		<pointmass name="wing_right_4"> <!-- 31 -->
+            <weight unit="LBS"> 80.535 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> 7.74 </y>
+                <z> -1.6 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_right_4 </property>
+	
+		<pointmass name="wing_right_5"> <!-- 32 -->
+            <weight unit="LBS"> 50.971 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.22 </x>
+                <y> 10.3 </y>
+                <z> -1.37 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/wing_right_5 </property>
+
+		<pointmass name="wing_right_6"> <!-- 33 -->
+            <weight unit="LBS"> 36.817 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.18 </x>
+                <y> 12.6 </y>
+                <z> -1.16 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_right_6 </property>
+
+		<pointmass name="wing_right_7"> <!-- 34 -->
+            <weight unit="LBS"> 21.848 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.09 </x>
+                <y> 14.86 </y>
+                <z> -0.96 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_right_7 </property>
+
+		<pointmass name="wing_right_8"> <!-- 35 WING TIP -->
+            <weight unit="LBS"> 3.638 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> 17.22 </y>
+                <z> -0.74 </z>
+            </location>
+		</pointmass>
+			<property value="1"> T4T/damage/wing_right_8 </property>
+
+		<pointmass name="gear_right"> <!-- 36 -->
+			<weight unit="LBS"> 118 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -3.5 </x> <!-- -5.25 -->
+                <y> 5.14 </y> <!-- 2.99 -->
+                <z> -1.9 </z> <!-- -5.5 -->
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/gear_right </property>
+			
+		<pointmass name="glycol radiator"> <!-- 37 -->
+			<weight unit="LBS"> 98 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.8 </x>
+                <y> 3.41 </y>
+                <z> -3.02 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/glycol_radiator </property>
+			
+	<!-- #### V-STAB #### -->
+	
+		<pointmass name="v-stab"> <!-- 38 -->
+            <weight unit="LBS"> 43.8 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 15.45 </x>
+                <z> 1.71 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/v-stab </property>	
+			<property value="15.45" unit="FT"> T4T/structure/v-stab/x </property>			
+			<property value="1.71" unit="FT"> T4T/structure/v-stab/z </property>		
+			<property value="18.8" unit="FT2"> T4T/structure/v-stab/area-sqft </property>
+			<property value="0.0" unit="DEG"> T4T/structure/v-stab/rigging-deg </property>
+			
+		<pointmass name="lead-ballast"> <!-- 39 -->
+            <weight unit="LBS"> 40 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 14.3 </x>
+            </location>
+        </pointmass>
+
+	<!-- #### H-STAB #### -->
+	<!-- #### left #### -->
+		<pointmass name="h-stab_left"> <!-- 40 -->
+            <weight unit="LBS"> 28.9 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 15.39 </x>
+                <y> -2.82 </y>
+                <z> 0.49 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/h-stab_left </property>	
+			<property value="15.39" unit="FT"> T4T/structure/h-stab/x </property>		
+			<property value="2.82" unit="FT"> T4T/structure/h-stab/y </property>
+			<property value="0.49" unit="FT"> T4T/structure/h-stab/z </property>
+			<property value="15.7" unit="FT2"> T4T/structure/h-stab/area-sqft </property>			
+			<property value="0.0" unit="DEG"> T4T/structure/h-stab/rigging-deg </property>  <!-- 2) in a fighter set to zero  -->			
+			<property value="0.0" unit="DEG"> T4T/structure/h-stab/dihedral-deg </property>
+			
+	<!-- #### H-STAB #### -->
+	<!-- #### right #### -->
+		<pointmass name="h-stab_right"> <!-- 41 -->
+            <weight unit="LBS"> 28.9 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 15.39 </x>
+                <y> 2.82 </y>
+                <z> 0.49 </z>
+            </location>
+        </pointmass>
+			<property value="1"> T4T/damage/h-stab_right </property>
+
+	<!-- #### /TARE WEIGHT #### -->
+	
+	
+	<!-- #### REMOVEABLE WEIGHT #### -->
+
+		<pointmass name="pilot"> <!-- 42 -->
+            <weight unit="LBS"> 200 </weight>
+            <location name="POINTMASS" unit="FT">
+            </location>
+        </pointmass>		
+		<property value="1"> T4T/structure/pilot/damage </property>
+		
+		<pointmass name="reflector_sight"> <!-- 43 -->
+            <weight unit="LBS"> 4.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.48 </x>
+                <z> 1.74 </z>
+            </location>
+        </pointmass>
+		
+		<pointmass name="incendary"> <!-- 44 -->
+            <weight unit="LBS"> 2.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <z> 0.82 </z>
+            </location>
+        </pointmass>
+		
+		<pointmass name="oxygen"> <!-- 45 -->
+            <weight unit="LBS"> 19.6 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 8.43 </x>
+            </location>
+        </pointmass>
+		
+		<pointmass name="dinghy"> <!-- 46 -->
+            <weight unit="LBS"> 15 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -1.64 </x>>
+                <z> -0.43 </z>
+            </location>
+        </pointmass>
+		
+	<!-- #### Aft #### -->
+		<pointmass name="radio"> <!-- 47 -->
+            <weight unit="LBS"> 87 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 4.59 </x>
+            </location>
+        </pointmass>
+		
+		<pointmass name="radio_detonator"> <!-- 48 -->
+            <weight unit="LBS"> 32.4 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 3.61 </x>
+            </location>
+        </pointmass>
+		
+		<pointmass name="first_aid"> <!-- 49 -->
+            <weight unit="LBS"> 3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> 5.38 </x>
+            </location>
+        </pointmass>
+		
+	<!-- #### WINGS #### -->
+	<!-- #### Left #### -->
+		<pointmass name="303_left_1"> <!-- 50 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> -6.73 </y>
+                <z> -1.15 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_2"> <!-- 51 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> -8.86 </y>
+                <z> -1.44 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_3"> <!-- 52 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> -9.51 </y>
+                <z> -1.51 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_4"> <!-- 53 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> -12.63 </y>
+                <z> -1.71 </z>
+            </location>
+        </pointmass>
+		
+	<!-- #### Right #### -->
+		<pointmass name="303_right_1"> <!-- 54 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> 6.73 </y>
+                <z> -1.15 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_2"> <!-- 55 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> 8.86 </y>
+                <z> -1.44 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_3"> <!-- 56 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> 9.51 </y>
+                <z> -1.51 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_4"> <!-- 57 -->
+            <weight unit="LBS"> 24 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -5.25 </x>
+                <y> 12.63 </y>
+                <z> -1.71 </z>
+            </location>
+        </pointmass>
+
+		<pointmass name="camera"> <!-- 58 -->
+            <weight unit="LBS"> 8.5 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -3.05 </x>
+                <y> 4.66 </y>
+                <z> -2 </z>
+            </location>
+        </pointmass>	
+		
+	<!-- #### EXPENDABLE WEIGHT #### -->	
+	
+	<!-- #### WINGS #### -->
+	<!-- #### Left #### -->
+		<pointmass name="303_left_1_ammo"> <!-- 59 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -7.87 </y>
+                <z> -1.31 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_2_ammo"> <!-- 60 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -7.87 </y>
+                <z> -1.31 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_3_ammo"> <!-- 61 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -11.15 </y>
+                <z> -1.61 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_left_4_ammo"> <!-- 62 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> -11.15 </y>
+                <z> -1.61 </z>
+            </location>
+        </pointmass>
+		
+	<!-- #### Right #### -->
+		<pointmass name="303_right_1_ammo"> <!-- 63 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> 7.87 </y>
+                <z> -1.31 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_2_ammo"> <!-- 64 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> 7.87 </y>
+                <z> -1.31 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_3_ammo"> <!-- 65 -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> 11.15 </y>
+                <z> -1.61 </z>
+            </location>
+        </pointmass>
+		<pointmass name="303_right_4_ammo"> <!-- 66* -->
+            <weight unit="LBS"> 23.3 </weight>
+            <location name="POINTMASS" unit="FT">
+                <x> -4.86 </x>
+                <y> 11.15 </y>
+                <z> -1.61 </z>
+            </location>
+        </pointmass>
+		
+	<function name="T4T/metrics/lift-sqft">
+		<sum>
+			<property>metrics/Sw-sqft</property>
+			<property>metrics/Sh-sqft</property>
+		</sum>
+	</function>
+	
+	<function name="T4T/metrics/wing_inner-sqft">
+		<sum>
+			<property>T4T/structure/wing/_1_area-sqft</property>
+			<property>T4T/structure/wing/_2_area-sqft</property>
+			<property>T4T/structure/wing/_3_area-sqft</property>
+			<property>T4T/structure/wing/_4_area-sqft</property>
+		</sum>
+	</function>
+	
+	<function name="T4T/metrics/wing_outer-sqft">
+		<sum>
+			<property>T4T/structure/wing/_5_area-sqft</property>
+			<property>T4T/structure/wing/_6_area-sqft</property>
+			<property>T4T/structure/wing/_7_area-sqft</property>
+			<property>T4T/structure/wing/_8_area-sqft</property>
+		</sum>
+	</function>		
+	
+	<function name="T4T/metrics/wing-sqft">
+		<product>
+			<value>0.5</value>
+			<property>metrics/Sw-sqft</property>
+		</product>
+	</function>
+	
+	<function name="T4T/aero/wing_efficiency">
+		<product>
+			<pi/>
+			<value>1</value> <!-- 1 for eliptical wings 0.7 for straight -->
+			<property>T4T/metrics/wing_aspect</property>
+		</product>
+	</function>
+	
+	<function name="T4T/aero/h-stab_efficiency">
+		<product>
+			<pi/>
+			<value>1</value> <!-- 1 for eliptical wings 0.7 for straight -->
+			<property>T4T/metrics/h-stab_aspect</property>
+		</product>
+	</function>
+
+	<function name="T4T/metrics/wing_flex_downward-rad">
+		<toradians>
+			<property>T4T/metrics/wing_flex_downward-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/metrics/wing_flex_upward-rad">
+		<toradians>
+			<property>T4T/metrics/wing_flex_upward-deg</property>
+		</toradians>
+	</function>
+	
+	
+			<!-- #### DIHEDRAL #### -->
+
+	<function name="T4T/structure/wing/_1_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_1_dihedral-deg</property>
+		</toradians>
+	</function>
+
+	<function name="T4T/structure/wing/_2_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_2_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_3_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_3_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_4_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_4_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_5_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_5_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_6_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_6_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_7_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_7_dihedral-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_8_dihedral-rad">
+		<toradians>
+			<property>T4T/structure/wing/_8_dihedral-deg</property>
+		</toradians>
+	</function>
+
+	<function name="T4T/structure/h-stab/dihedral-rad">
+		<toradians>
+			<property>T4T/structure/h-stab/dihedral-deg</property>
+		</toradians>
+	</function>
+	
+			<!-- #### RIGGING #### -->
+
+	<function name="T4T/structure/wing/_1_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_1_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_2_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_2_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_3_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_3_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_4_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_4_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_5_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_5_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_6_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_6_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_7_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_7_rigging-deg</property>
+		</toradians>
+	</function>
+	
+	<function name="T4T/structure/wing/_8_rigging-rad">
+		<toradians>
+			<property>T4T/structure/wing/_8_rigging-deg</property>
+		</toradians>
+	</function>
+
+	<function name="T4T/structure/h-stab/rigging-rad">
+		<toradians>
+			<property>T4T/structure/h-stab/rigging-deg</property>
+		</toradians>
+	</function>	
+
+	<function name="T4T/structure/v-stab/rigging-rad">
+		<toradians>
+			<property>T4T/structure/v-stab/rigging-deg</property>
+		</toradians>
+	</function>
+	
+    </mass_balance>
+ 
+ 	<ground_reactions>
+
+        <contact type="BOGEY" name="left_main">
+           <location unit="FT">
+                <x> -5.25 </x>
+                <y> -3 </y>
+                <z> -6.56 </z>
+     		</location>
+			<static_friction>  0.80 </static_friction>
+			<dynamic_friction> 0.05 </dynamic_friction>
+			<rolling_friction> 0.01 </rolling_friction>
+			<spring_coeff unit="LBS/FT"> 36000 </spring_coeff> <!--  weight * 6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 4140 </damping_coeff> <!--  spring_coeff * 0.115 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 2070 </damping_coeff_rebound> <!--  damping_coeff * 0.5 -->
+			<brake_group>LEFT</brake_group>
+			<retractable>1</retractable>
+		</contact>
+
+        <contact type="BOGEY" name="right_main">
+           <location unit="FT">
+                <x> -5.25 </x>
+                <y> 3 </y>
+                <z> -6.56 </z>
+     		</location>
+			<static_friction>  0.80 </static_friction>
+			<dynamic_friction> 0.05 </dynamic_friction>
+			<rolling_friction> 0.01 </rolling_friction>
+			<spring_coeff unit="LBS/FT"> 36000 </spring_coeff> <!--  weight * 6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 4140 </damping_coeff> <!--  spring_coeff * 0.115 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 2070 </damping_coeff_rebound> <!--  damping_coeff * 0.5 -->
+			<brake_group>RIGHT</brake_group>
+			<retractable>1</retractable>
+		</contact>
+		
+        <contact type="BOGEY" name="tail">
+            <location unit="FT">
+                <x> 15 </x>	
+				<z> -2 </z>			
+		</location>
+		<static_friction>  0.80 </static_friction>
+		<dynamic_friction> 0.05 </dynamic_friction>
+		<rolling_friction> 0.05 </rolling_friction>
+		<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+		<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+		<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		<max_steer unit="DEG"> -30 </max_steer>
+		<brake_group>NONE</brake_group>
+		<retractable>0</retractable>
+        </contact>
+
+<!-- HIGH LEVEL JACKS (for use in wind tunnel)   
+
+        <contact type="BOGEY" name="left_main">
+           <location unit="FT">
+                <x> -15.25 </x>
+                <y> -5 </y>
+                <z> -16.4 </z>
+     		</location>
+			<static_friction>  0.80 </static_friction>
+			<dynamic_friction> 0.05 </dynamic_friction>
+			<rolling_friction> 0.01 </rolling_friction>
+			<spring_coeff unit="LBS/FT"> 36000 </spring_coeff> 
+			<damping_coeff unit="LBS/FT/SEC"> 4140 </damping_coeff> 
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 2070 </damping_coeff_rebound> 
+			<brake_group>LEFT</brake_group>
+			<retractable>0</retractable>
+		</contact>
+
+        <contact type="BOGEY" name="right_main">
+           <location unit="FT">
+                <x> -15.25 </x>
+                <y> 5 </y>
+                <z> -16.4 </z>
+     		</location>
+			<static_friction>  0.80 </static_friction>
+			<dynamic_friction> 0.05 </dynamic_friction>
+			<rolling_friction> 0.01 </rolling_friction>
+			<spring_coeff unit="LBS/FT"> 36000 </spring_coeff> 
+			<damping_coeff unit="LBS/FT/SEC"> 4140 </damping_coeff> 
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 2070 </damping_coeff_rebound> 
+			<brake_group>RIGHT</brake_group>
+			<retractable>0</retractable>
+		</contact>
+		
+        <contact type="BOGEY" name="tail">
+            <location unit="FT">
+                <x> 15 </x>	
+                <z> -17.75 </z>		
+		</location>
+		<static_friction>  0.80 </static_friction>
+		<dynamic_friction> 0.05 </dynamic_friction>
+		<rolling_friction> 0.05 </rolling_friction>
+		<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> 
+		<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> 
+		<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound>
+		<max_steer unit="DEG"> -30 </max_steer>
+		<brake_group>NONE</brake_group>
+		<retractable>0</retractable>
+        </contact>
+
+ -->
+ 
+		<contact type="STRUCTURE" name="LEFT_WING">
+			<location unit="FT">
+                <x> -3.5 </x>
+                <y> -17.5 </y>
+                <z> -0.8 </z>
+			</location>
+			<static_friction>  1 </static_friction>
+			<dynamic_friction> 1 </dynamic_friction>
+			<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		</contact>
+
+		<contact type="STRUCTURE" name="RIGHT_WING">
+			<location unit="FT">
+                <x> -3.5 </x>
+                <y> 17.5 </y>
+                <z> -0.8 </z>
+			</location>
+			<static_friction>  1 </static_friction>
+			<dynamic_friction> 1 </dynamic_friction>
+			<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		</contact>
+
+		<contact type="STRUCTURE" name="TAIL_TOP">
+			<location unit="FT">
+                <x> 15 </x>
+                <z> 3.6 </z>
+			</location>
+			<static_friction>  1 </static_friction>
+			<dynamic_friction> 1 </dynamic_friction>
+			<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		</contact>
+		
+		<contact type="STRUCTURE" name="PROP">
+			<location unit="FT">
+                <x> -12 </x>
+                <z> -5.4 </z>
+			</location>
+			<static_friction>  1 </static_friction>
+			<dynamic_friction> 1 </dynamic_friction>
+			<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		</contact>
+
+		<contact type="STRUCTURE" name="NOSE">
+			<location unit="FT">
+                <x> -12 </x>
+                <z> 0.6 </z>
+			</location>
+			<static_friction>  1 </static_friction>
+			<dynamic_friction> 1 </dynamic_friction>
+			<spring_coeff unit="LBS/FT"> 3600 </spring_coeff> <!--  weight * 0.6 -->
+			<damping_coeff unit="LBS/FT/SEC"> 360 </damping_coeff> <!--  spring_coeff * 0.1 -->
+			<damping_coeff_rebound unit="LBS/FT/SEC"> 90 </damping_coeff_rebound> <!--  damping_coeff * 0.25 -->
+		</contact>			
+
+    </ground_reactions>
+
+
+<!--propulsion-->
+
+ <propulsion>
+ 
+<!--Engine-->
+ 		<engine file="Merlin-MkII">
+            <location unit="FT">
+                <x> -8.43 </x>
+            </location>
+            <feed>0</feed>
+			<thruster file="metal_2_pitch_prop">
+				<location unit="FT">
+					<x> -11.61 </x>
+                </location>
+                <sense> 1 </sense>
+                <p_factor> 103 </p_factor>
+            </thruster>
+        </engine>
+		
+        <tank type="FUEL" number="0"> <!-- sump -->
+            <location unit="FT">
+                <x> -3.61 </x>
+                <z> -3 </z>
+            </location>
+            <capacity unit="LBS"> 5 </capacity>
+            <contents unit="LBS"> 5 </contents>
+            <priority> 1 </priority>
+        </tank>		
+		
+        <tank type="FUEL" number="1"> <!-- Bottom Tank-->
+            <location unit="FT">
+                <x> -3.61 </x>
+                <z> -1.64 </z>
+            </location>
+            <capacity unit="LBS"> 266.4 </capacity>
+            <contents unit="LBS"> 266.4 </contents>
+            <priority> 0 </priority>
+        </tank>
+		
+        <tank type="FUEL" number="2"> <!-- Top Tank -->
+            <location unit="FT">
+                <x> -3.61 </x>
+            </location>
+            <capacity unit="LBS"> 345.6 </capacity>
+            <contents unit="LBS"> 345.6 </contents>
+			<priority> 0 </priority>
+        </tank>
+
+	
+		<tank type="FUEL" number="3"> <!-- Oil Tank -->
+			<location unit="FT">
+				<x> -9.12 </x>
+				<z> -1.77 </z>
+			</location>
+			<capacity unit="LBS"> 54 </capacity>
+			<contents unit="LBS"> 54 </contents>
+		</tank>
+  
+ </propulsion>
+
+ 	<system file = "T4T/Mk.I/flight_control"/>	
+	<system file = "T4T/Mk.I/Merlin-MkII"/>
+	<system file = "T4T/Mk.I/EHV"/>
+	<system file = "T4T/Mk.I/undercarriage"/>
+	<system file = "T4T/Mk.I/flaps"/>	
+	<system file = "T4T/Mk.I/brakes"/>
+ 	<system file = "T4T/Mk.I/angle_of_attack"/>
+	<system file = "T4T/Mk.I/efficiency"/>
+	<system file = "T4T/Mk.I/co-efficients"/>
+	<system file = "T4T/Mk.I/force_calcs"/>
+	<system file = "T4T/Mk.I/moment_calcs"/>
+ 	  
+	<aerodynamics>
+	
+	</aerodynamics>
+	
+
+	
+	<external_reactions>
+	<!-- STRUCTURAL frame (x +ve aft, y +ve right, z +ve up) -->
+
+
+	<!--	
+-->
+
+		<force name="wings" frame="BODY">
+			<function>
+				<value>1</value>
+			</function>
+		</force>
+
+		<force name="tail" frame="BODY">
+			<function>
+				<value>1</value>
+			</function>
+
+			<location unit="FT">
+                <x> 15.42 </x>
+                <z> 1.0 </z>
+			</location>
+		</force>
+		
+		<force name="drag" frame="WIND">
+			<function>
+				<value>1</value>
+			</function>
+		</force>
+	
+		<force name="precession[0]" frame="BODY">
+			<function>
+				<value>1</value>
+			</function>
+			
+			<location unit="FT">
+                <x> -11.61 </x>
+			</location>
+		</force>
+
+
+    </external_reactions>
+	
+	<!--	
+	
+	<output file="T4T-Mk.I/test-record"/>
+
+ -->
+</fdm_config>	
+
+
+

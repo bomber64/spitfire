@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, Cd 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="moment_calcs">
+	
+	<channel name="wing" execute="T4T/execute">
+	
+    <pure_gain name="inertia/cg-x-ft">
+		<input>inertia/cg-x-in</input>
+		<gain>0.08333</gain>
+    </pure_gain>
+
+<!-- CENTRE OF PRESSURE CALCS IN THE X CO-ORD -->
+
+	<fcs_function name="T4T/moments/wing_left/zy-lbsft">
+		<function>
+			<sum>
+				<product>
+					<property>T4T/forces/wing_left/_1_z-lbs</property>
+					<property>T4T/structure/wing/_1_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_2_z-lbs</property>
+					<property>T4T/structure/wing/_2_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_3_z-lbs</property>
+					<property>T4T/structure/wing/_3_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_4_z-lbs</property>
+					<property>T4T/structure/wing/_4_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_5_z-lbs</property>
+					<property>T4T/structure/wing/_5_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_6_z-lbs</property>
+					<property>T4T/structure/wing/_6_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_7_z-lbs</property>
+					<property>T4T/structure/wing/_7_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/_8_z-lbs</property>
+					<property>T4T/structure/wing/_8_y</property> <!-- z force acts at -->				
+				</product>				
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/moments/wing_right/zy-lbsft">
+		<function>
+			<sum>
+				<product>
+					<property>T4T/forces/wing_right/_1_z-lbs</property>
+					<property>T4T/structure/wing/_1_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_2_z-lbs</property>
+					<property>T4T/structure/wing/_2_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_3_z-lbs</property>
+					<property>T4T/structure/wing/_3_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_4_z-lbs</property>
+					<property>T4T/structure/wing/_4_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_5_z-lbs</property>
+					<property>T4T/structure/wing/_5_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_6_z-lbs</property>
+					<property>T4T/structure/wing/_6_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_7_z-lbs</property>
+					<property>T4T/structure/wing/_7_y</property> <!-- z force acts at -->				
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/_8_z-lbs</property>
+					<property>T4T/structure/wing/_8_y</property> <!-- z force acts at -->				
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/moments/wings/CoP_y-ft">
+		<function>
+		<description>Centre of Pressure in the Y axis</description>
+			<quotient>
+				<sum>
+					<abs><property>T4T/moments/wing_left/zy-lbsft</property></abs>
+					<abs><property>T4T/moments/wing_right/zy-lbsft</property></abs>
+				</sum>
+				<property>T4T/forces/wings/z-lbs</property>
+			</quotient>
+		</function>	
+	</fcs_function>
+
+<!-- adjust these values to match the wings characteristic -->	
+	<fcs_function name="T4T/moments/wing/cord-in">
+		<function>
+		<description>wing cord at Centre of Pressure</description>
+			<table>
+				<independentVar lookup="row">T4T/moments/wings/CoP_y-ft</independentVar>
+				<tableData>
+					0			99.6
+					7.7			94
+					10.3		85.7
+					12.6		47.25
+					14.8		59
+					17.2		30.7
+				</tableData>
+			</table>
+		</function>
+	</fcs_function>
+	
+<!-- CENTRE OF PRESSURE CALCS IN THE X CO-ORD -->
+
+<!-- adjust these values to match the wings characteristic -->	
+	<fcs_function name="T4T/moments/wings/zx-in">
+		<function>
+			<sum>
+				<table>
+					<independentVar lookup="row">T4T/moments/wings/CoP_y-ft</independentVar>			
+					<tableData>
+						10.3		-62.4
+						12.6		-62.16
+						14.8		-60.96
+						17.2		-57.6
+					</tableData>
+				</table>			
+				<product>
+					<property>T4T/coefficients/compression</property>				
+					<property>T4T/moments/wing/cord-in</property>
+				</product>
+			</sum>
+		</function>
+		<output>external_reactions/wings/location-x-in</output>		
+	</fcs_function>	
+	
+<!-- CENTRE OF PRESSURE CALCS IN THE Y CO-ORD -->
+
+<!-- adjust these values to match the wings characteristic -->		
+	<fcs_function name="T4T/moments/wings/zy-in">
+		<function>
+		<description>Centre of Pressure in the Y axis</description>
+			<product>
+				<value> 12 </value>
+				<quotient name="T4T/moments/wings/zy-ft">
+					<difference>
+						<property>T4T/moments/wing_right/zy-lbsft</property>
+						<property>T4T/moments/wing_left/zy-lbsft</property>
+					</difference>
+					<property>T4T/forces/wings/z-lbs</property>		
+				</quotient>
+			</product>
+		</function>	
+		<output>external_reactions/wings/location-y-in</output>	
+	</fcs_function>
+	
+<!-- WING CENTRE OF PRESSURE CALCS IN THE Z CO-ORD -->	
+
+<!-- adjust these values to match the wings characteristic -->		
+	<fcs_function name="T4T/moments/wings/zz-in">
+		<function>
+		<description>wing Centre of Pressure in the Z axis</description>
+			<table>
+				<independentVar lookup="row">T4T/moments/wings/CoP_y-ft</independentVar>			
+				<tableData>
+					1.0			-26
+					17.2		-9
+				</tableData>
+			</table>
+		</function>
+		<output>external_reactions/wings/location-z-in</output>
+	</fcs_function>	
+
+	</channel>
+	
+	<channel name="drag" execute="T4T/execute">
+	
+<!-- WING CENTRE OF DRAG CALCS -->
+
+	<!-- ####   left   #### -->
+	
+<!-- potentialy adjust  -->
+	<fcs_function name="T4T/moments/wing_left/drag_flaps-lbsft">
+		<function>
+		<description>drag to the left moment</description>
+			<sum>
+				<product>
+					<property>T4T/forces/wing_left/drag_vortex_inner-lbs</property>
+					<value> -1 </value>
+					<property>T4T/structure/wing/_4_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<property>T4T/forces/wing_left/drag_vortex_outer-lbs</property>
+					<value> -1 </value>
+					<property>T4T/structure/wing/_8_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_left/drag_aileron-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+					<value> -1 </value>
+				</product>					
+			</sum>
+		</function>
+	</fcs_function>
+	
+	
+	<fcs_function name="T4T/moments/wing_left/drag_wingtip-lbsft">
+		<function>
+		<description>drag to the left moment</description>
+			<sum>
+				<product>
+					<sum>
+						<property>T4T/forces/wing_left/drag_vortex_inner-lbs</property>
+						<property>T4T/forces/wing_left/drag_vortex_outer-lbs</property>
+					</sum>
+					<value> -1 </value>
+					<property>T4T/structure/wing/_8_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_left/drag_aileron-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+					<value> -1 </value>
+				</product>					
+			</sum>
+		</function>
+	</fcs_function>	
+	
+	
+	<switch>
+		<default value="T4T/moments/wing_left/drag_wingtip-lbsft"/>
+		<test value="T4T/moments/wing_left/drag_flaps-lbsft">
+			fcs/flap-pos-norm GT 0.1
+		</test>
+		<output>T4T/moments/wing_left/drag-lbsft</output>
+	</switch>
+
+	<!-- ####   right   #### -->
+	
+<!-- potentialy adjust these values to match the wings characteristic -->
+	<fcs_function name="T4T/moments/wing_right/drag_flaps-lbsft">
+		<function>
+		<description>drag to the right moment</description>
+			<sum>
+				<product>
+					<property>T4T/forces/wing_right/drag_vortex_inner-lbs</property>
+					<property>T4T/structure/wing/_4_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<property>T4T/forces/wing_right/drag_vortex_outer-lbs</property>
+					<property>T4T/structure/wing/_8_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_right/drag_aileron-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_right/drag_aileron_trim-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	
+	<fcs_function name="T4T/moments/wing_right/drag_wingtip-lbsft">
+		<function>
+		<description>drag to the right moment</description>
+			<sum>
+				<product>
+					<sum>
+						<property>T4T/forces/wing_right/drag_vortex_inner-lbs</property>
+						<property>T4T/forces/wing_right/drag_vortex_outer-lbs</property>
+					</sum>
+					<property>T4T/structure/wing/_8_y</property> <!-- drag force acts at -->						
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_right/drag_aileron-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+				</product>
+				<product>
+					<abs><property>T4T/forces/wing_right/drag_aileron_trim-lbs</property></abs>
+					<property>T4T/structure/wing/_6_y</property> <!-- drag force acts at -->
+				</product>				
+			</sum>
+		</function>
+	</fcs_function>	
+	
+	
+	<switch>
+		<default value="T4T/moments/wing_right/drag_wingtip-lbsft"/>
+		<test value="T4T/moments/wing_right/drag_flaps-lbsft">
+			fcs/flap-pos-norm GT 0.1
+		</test>
+		<output>T4T/moments/wing_right/drag-lbsft</output>
+	</switch>
+			
+	<summer name="T4T/moments/wing/drag-lbsft">
+		<input>T4T/moments/wing_left/drag-lbsft</input>
+		<input>T4T/moments/wing_right/drag-lbsft</input>		
+	</summer>		
+	
+	<fcs_function name="T4T/moments/drag-y-in">
+		<function>
+		<description>centre of plane drag in the Y axis</description>
+			<product>
+				<value> 12 </value>
+				<quotient>
+					<property>T4T/moments/wing/drag-lbsft</property>
+					<property>T4T/forces/drag-lbs</property>		
+				</quotient>
+			</product>
+		</function>
+		<output>external_reactions/drag/location-y-in</output>
+	</fcs_function>
+	
+	<fcs_function name="T4T/moments/drag_gear-z-lbsft">
+		<function>
+			<product>
+				<property>T4T/forces/gear/drag-lbs</property>			
+				<product name="T4T/moments/drag_gear-z-ft">
+					<property>T4T/structure/gear/_z</property>
+					<property>gear/unit[0]/pos-norm</property>
+				</product>
+			</product>				
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/moments/drag_gear-x-lbsft">
+		<function>
+			<product>
+				<property>T4T/forces/gear/drag-lbs</property>			
+				<product name="T4T/moments/drag_gear-x-ft">
+					<property>T4T/structure/gear/_x</property>
+					<property>gear/unit[0]/pos-norm</property>
+				</product>
+			</product>				
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/moments/drag-z-in">
+		<function>
+		<description>centre of plane drag in the Z axis</description>
+			<product>
+				<value> 12 </value>
+				<quotient>
+					<property>T4T/moments/drag_gear-z-lbsft</property>
+					<property>T4T/forces/drag-lbs</property>		
+				</quotient>
+			</product>
+		</function>
+		<output>external_reactions/drag/location-z-in</output>
+	</fcs_function>	
+
+	<fcs_function name="T4T/moments/drag-x-in">
+		<function>
+		<description>centre of plane drag in the X axis</description>
+			<product>
+				<value> 12 </value>
+				<quotient>
+					<property>T4T/moments/drag_gear-x-lbsft</property>
+					<property>T4T/forces/drag-lbs</property>		
+				</quotient>
+			</product>
+		</function>
+		<output>external_reactions/drag/location-x-in</output>
+	</fcs_function>	
+	
+	</channel>
+	
+	<channel name="tail" execute="T4T/execute">
+	
+	
+<!-- TAIL CENTRE OF PRESSURE CALCS IN THE Y CO-ORD -->	
+	
+	<fcs_function name="T4T/moments/tail/zy-lbsft">
+		<function>
+		<description>roll moment</description>
+			<difference>
+				<product>
+					<property>T4T/forces/h-stab_right/z-lbs</property>
+					<property>T4T/structure/h-stab/y</property> <!-- Z force acts at -->
+				</product>			
+				<product>			
+					<property>T4T/forces/h-stab_left/z-lbs</property>
+					<property>T4T/structure/h-stab/y</property> <!-- Z force acts at -->
+				</product>		
+			</difference>	
+		</function>
+	</fcs_function>
+			
+	<fcs_function name="T4T/moments/tail/zy-in">
+		<function>
+		<description>tail Centre of Pressure in the Y axis</description>
+			<product>
+				<value> 12 </value>
+				<quotient>
+					<property>T4T/moments/tail/zy-lbsft</property>						
+					<property>T4T/forces/tail/z-lbs</property>
+				</quotient>
+			</product>
+		</function>	
+		<output>external_reactions/tail/location-y-in</output>
+	</fcs_function>
+	
+	</channel>
+
+	<channel name="plane">
+	
+    <pure_gain name="T4T/moments/wings/zx-lbsin">
+		<input>T4T/forces/wings/z-lbs</input>
+		<gain>T4T/moments/wings/zx-in</gain>
+    </pure_gain>
+	
+	<fcs_function name="T4T/moments/tail/zx-lbsin">
+		<function>
+			<product>
+				<value> 12 </value>
+				<property>T4T/forces/tail/z-lbs</property>
+				<property>T4T/structure/h-stab/x</property>					
+			</product>
+		</function>	
+	</fcs_function>
+	
+<!-- CENTRE OF PRESSURE CALCS IN THE X CO-ORD -->
+	
+	<fcs_function name="T4T/moments/Centre_of_Lift-in">
+		<function>
+		<description>Plane Centre of Pressure in the X axis</description>
+			<difference>
+				<quotient>
+					<sum>
+						<property>T4T/moments/wings/zx-lbsin</property>
+						<property>T4T/moments/tail/zx-lbsin</property>							
+					</sum>				
+					<property>T4T/forces/Z-lbs</property>	
+				</quotient>
+				<property>inertia/cg-x-in</property>
+			</difference>
+		</function>
+	</fcs_function>
+
+	
+	</channel>
+	
+</system>

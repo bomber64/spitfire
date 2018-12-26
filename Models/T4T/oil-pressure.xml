@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>Aircraft/Spitfire/Models/oil-pressure.ac</path>
+	<animation>
+		<type>rotate</type>
+		<object-name>Oil-Pressure-Needle1</object-name>
+		<property>/fdm/jsbsim/propulsion/engine[0]/oil-pressure-psi</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>-27</dep>
+			</entry>
+			<entry>
+				<ind>150</ind>
+				<dep>27</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>-0.04</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>Body</object-name>
+		<condition>
+				<equals>
+					<property>sim/aircraft</property>
+					<value>spitfireVb</value>
+				</equals>
+		</condition>
+		<diffuse>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>0.0</blue>
+		</diffuse>
+		<ambient>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>0.0</blue>
+		</ambient>
+		<shininess>100</shininess>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<condition>
+			<greater-than>
+				<property>/controls/lighting/panel-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<emission>
+			<factor-prop>/controls/lighting/panel-norm</factor-prop>
+			<red>0.75</red>
+			<green>0.25</green>
+			<blue>0.25</blue>
+		</emission>
+	</animation>
+	
+	<!-- *** LoD *** -->
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

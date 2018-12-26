@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, Cd 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indiCdte if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="flaps">
+ 
+	<property type="double" value="1">flap/wing_left/damage</property>
+ 	<property type="double" value="1">flap/wing_right/damage</property>
+	<property type="bool" value="0">flap/position-cmd</property>
+ 	<property type="double" value="0">flap/wing_left/position-now</property>
+ 	<property type="double" value="0">flap/wing_right/position-now</property>
+	<property type="double" value="-0.1">flap/speed-raise</property> 
+	<property type="double" value="0.25">flap/speed-lower</property>
+	<property type="double" value="0">T4T/forces/wing_left/drag_flap-lbs</property>
+	<property type="double" value="0">T4T/forces/wing_right/drag_flap-lbs</property>
+	
+	<channel name="flap">
+
+	    <!-- Flap Raising or Lowering -->
+		<switch name="flap/direction-speed">
+			<default value="flap/speed-lower"/>
+			<test value="flap/speed-raise">
+				/fdm/jsbsim/flap/position-cmd LT flap/wing_left/position-now
+			</test>
+		</switch>
+		
+		<!-- Left Wing -->
+		
+		<fcs_function name="flap/wing_left/over-speed">
+			<function>
+				<table>
+					<independentVar>T4T/forces/wing_left/drag_flap-lbs</independentVar>
+					<tableData>
+						0      	0
+						2275	-0.25 <!-- set this value at a speed that stops the flaps -->
+						4000	-1
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="flap/wing_left/deployment-speed">
+			<function>
+				<product>
+					<property>propulsion/engine[0]/hydraulic_pressure</property>
+					<sum>
+						<property>flap/direction-speed</property>
+						<property>flap/wing_left/over-speed</property>
+					</sum>
+					<property>flap/wing_left/damage</property>
+				</product>
+			</function>
+		</fcs_function>
+
+		<switch name="flap/wing_left/in-motion">
+			<default value="flap/wing_left/deployment-speed"/>
+			<test logic="AND" value="0">  <!-- Hi Limit Stop -->
+				flap/wing_left/position-now EQ 0
+				flap/position-cmd EQ 0
+			</test>
+			<test logic="AND" value="0">  <!-- Intermediate Stop -->
+				flap/wing_left/position-now GE 0.99
+				flap/wing_left/position-now LE 1.01
+				flap/position-cmd EQ 1
+			</test>
+			<test logic="AND" value="0">  <!-- Lo Limit Stop -->
+				flap/wing_left/position-now EQ 2
+				flap/position-cmd EQ 2
+			</test>
+		</switch>
+		
+		<!--  Cylinder  -->
+		<integrator name="flap/wing_left/position-now">
+			<input>flap/wing_left/in-motion</input>
+			<trigger>hydraulic/pressure-stop</trigger>
+			<c1>1</c1>
+			<clipto>
+				<min> 0 </min>
+				<max> 2 </max> <!-- adjust for the qty of intermediate stops -->
+			</clipto>
+			<output>flap/wing_left/position-now</output>
+		</integrator>
+		
+		<fcs_function name="fcs/wing_left/flap-rad">
+			<function>
+				<table>
+					<independentVar>flap/wing_left/position-now</independentVar>
+					<tableData>
+						0	0
+						1	0.523
+						2	1.57
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<!-- Right Wing -->
+		
+		<fcs_function name="flap/wing_right/over-speed">
+			<function>
+				<table>
+					<independentVar>T4T/forces/wing_right/drag_flap-lbs</independentVar>
+					<tableData>
+						0      	0
+						2275	-0.25 <!-- set this value at a speed that stops the flaps -->
+						4000	-1
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="flap/wing_right/deployment-speed">
+			<function>
+				<product>
+					<property>propulsion/engine[0]/hydraulic_pressure</property>
+					<sum>
+						<property>flap/direction-speed</property>
+						<property>flap/wing_right/over-speed</property>
+					</sum>
+					<property>flap/wing_right/damage</property>
+				</product>
+			</function>
+		</fcs_function>
+
+		<switch name="flap/wing_right/in-motion">
+			<default value="flap/wing_right/deployment-speed"/>
+			<test logic="AND" value="0">  <!-- Hi Limit Stop -->
+				flap/wing_right/position-now EQ 0
+				flap/position-cmd EQ 0
+			</test>
+			<test logic="AND" value="0">  <!-- Intermediate Stop -->
+				flap/wing_right/position-now GE 0.99
+				flap/wing_right/position-now LE 1.01
+				flap/position-cmd EQ 1
+			</test>
+			<test logic="AND" value="0">  <!-- Lo Limit Stop -->
+				flap/wing_right/position-now EQ 2
+				flap/position-cmd EQ 2
+			</test>
+		</switch>
+		
+		<!--  Cylinder  -->
+		<integrator name="flap/wing_right/position-now">
+			<input>flap/wing_right/in-motion</input>
+			<trigger>hydraulic/pressure-stop</trigger>
+			<c1>1</c1>
+			<clipto>
+				<min> 0 </min>
+				<max> 2 </max> <!-- adjust for the qty of intermediate stops -->
+			</clipto>
+			<output>flap/wing_right/position-now</output>
+		</integrator>
+		
+		<fcs_function name="fcs/wing_right/flap-rad">
+			<function>
+				<table>
+					<independentVar>flap/wing_right/position-now</independentVar>
+					<tableData>
+						0	0
+						1	0.523
+						2	1.57
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+
+	</channel>
+
+
+	
+	</system>

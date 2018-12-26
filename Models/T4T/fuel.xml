@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!-- fuel contents -->
+<PropertyList>
+	<path>Aircraft/Spitfire/Models/fuel.ac</path>
+	
+	<animation>
+		<type>pick</type>
+		<visible>false</visible>
+		<object-name>box</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>/controls/switches/fuel-gauge</property>
+				<value type="bool">1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/switches/fuel-gauge</property>
+					<value type="bool">0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Needle2</object-name>
+		<property>/fdm/jsbsim/propulsion/tank[1]/pct-full</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>100</ind>
+				<dep>68</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0.0165651</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Needle1</object-name>
+		<condition>
+			<property>controls/switches/fuel-gauge</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>Needle1</object-name>
+		<condition>
+			<not>
+				<property>controls/switches/fuel-gauge</property>
+			</not>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<condition>
+			<greater-than>
+				<property>/controls/lighting/panel-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<emission>
+			<factor-prop>/controls/lighting/panel-norm</factor-prop>
+			<red>0.75</red>
+			<green>0.25</green>
+			<blue>0.25</blue>
+		</emission>
+	</animation>
+
+
+	<!-- *** LoD *** -->
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

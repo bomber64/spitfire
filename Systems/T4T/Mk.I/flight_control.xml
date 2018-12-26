@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="flight_control">
+
+<property type="double" value="1"> T4T/one</property>	
+<property type="double" value="1"> T4T/pilot/health</property>
+<property type="double" value="0"> T4T/aero/v-stab/qbar-psf</property>
+<property type="double" value="0"> T4T/aero/h-stab/qbar-psf</property>
+<property type="double" value="0"> T4T/forces/h-stab_left/feedback_elevator-lbs</property>
+<property type="double" value="0"> T4T/forces/h-stab_right/feedback_elevator-lbs</property>
+<property type="double" value="0"> T4T/forces/h-stab_left/feedback_elevator_trim-lbs</property>
+<property type="double" value="0"> T4T/forces/h-stab_right/feedback_elevator_trim-lbs</property>
+<property type="double" value="0"> T4T/forces/wing_left/feedback_aileron-lbs</property>
+<property type="double" value="0"> T4T/forces/wing_right/feedback_aileron-lbs</property>
+<property type="double" value="0"> T4T/forces/wing/feedback_aileron_trim-lbs</property>
+<property type="double" value="0"> T4T/aero/wing_right/_5_qbar-psf</property>
+<property type="double" value="0"> T4T/aero/wing_left/_7_qbar-psf</property>
+<property type="double" value="0"> T4T/aero/wing_right/_7_qbar-psf</property>
+<property type="double" value="0"> T4T/forces/v-stab/feedback_rudder-lbs</property>
+<property type="double" value="0"> T4T/forces/v-stab/feedback_rudder_trim-lbs</property>
+
+	<channel name="initiate">
+	
+		<switch name="T4T/execute">
+			<default value="0"/>
+			<test value="1">
+				sim-time-sec GT 1
+			</test>
+			<output>T4T/execute</output>
+		</switch>
+
+	</channel>
+	
+	<channel name="Elevator-moments">
+
+		<fcs_function name="T4T/moments/h-stab/elevator-lbsft">
+			<function>
+				<sum>
+					<product>
+						<value> 0.75 </value> <!-- armature -->
+						<property>T4T/forces/h-stab_left/feedback_elevator-lbs</property>
+					</product>
+					<product>
+						<value> 0.75 </value> <!-- armature -->
+						<property>T4T/forces/h-stab_right/feedback_elevator-lbs</property>
+					</product>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="T4T/moments/h-stab/elevator_trim-lbsft">
+			<function>
+				<sum>
+					<product>
+						<value> 1.3 </value> <!-- armature -->
+						<property>T4T/forces/h-stab_left/feedback_elevator_trim-lbs</property>
+					</product>
+					<product>
+						<value> 1.3 </value> <!-- armature -->
+						<property>T4T/forces/h-stab_right/feedback_elevator_trim-lbs</property>
+					</product>
+				</sum>
+			</function>
+		</fcs_function>
+	
+		<summer name="T4T/moments/h-stab/elevator_trim-stop">
+			<input>-T4T/moments/h-stab/elevator-lbsft</input>			
+			<input>T4T/moments/h-stab/elevator_trim-lbsft</input>
+		</summer>
+		
+		<summer name="T4T/forces/h-stab/feedback_elevator-lbs">
+			<input>T4T/forces/h-stab_left/feedback_elevator-lbs</input>			
+			<input>T4T/forces/h-stab_right/feedback_elevator-lbs</input>
+		</summer>
+
+		
+	</channel>
+
+	<channel name="Elevator">
+			
+		<fcs_function name="fcs/elevator-stick-negative">
+			<function>
+				<table>
+					<independentVar lookup="row">T4T/aero/h-stab/qbar-psf</independentVar>
+					<independentVar lookup="column">accelerations/Nz</independentVar>					
+					<tableData> <!-- 40lb @ 1G with 5.5lb per G -->
+					<!--			40lb		12.5lb      -->
+									1			6
+						11.6		-1.0		-1.0
+						17.0		-1.0		-0.82
+						21.6		-1.0		-0.73
+						27.2		-1.0		-0.64
+						32.2		-1.0		-0.59
+						37.3		-1.0		-0.54
+						76.1		-0.683		-0.38
+						135			-0.514		-0.28
+						209			-0.408		-0.23
+						304			-0.339		-0.19
+						412.8		-0.291		-0.16
+						541.4		-0.253		-0.14
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/elevator-stick-positive">
+			<function>
+				<table>
+					<independentVar>T4T/aero/h-stab/qbar-psf</independentVar>
+					<tableData> <!-- all values approx 40lb -->
+						54.5		1.0
+						76.1		0.837
+						135			0.625
+						209			0.5
+						304			0.414
+						412.8		0.356
+						541.4		0.31
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<aerosurface_scale name="elevator stick">
+			<input>fcs/elevator-cmd-norm</input>
+			<range>
+				<min>-1</min>
+				<max>1</max>
+			</range>
+			<clipto>
+				<min>fcs/elevator-stick-negative</min> <!-- pitch up -->
+				<max>fcs/elevator-stick-positive</max> <!-- pitch down -->
+			</clipto>
+			<output>fcs/elevator-stick-pos-norm</output>
+		</aerosurface_scale>		
+
+		<fcs_function name="elevator trim pos norm">
+			<function>
+			<table>
+				<independentVar lookup="row">T4T/aero/h-stab/qbar-psf</independentVar>
+				<independentVar lookup="column">fcs/pitch-trim-cmd-norm</independentVar>				
+				<tableData>
+								-1			0		1
+					0			0			0		0			
+					24.32		-0.485		0		0.485 <!-- 2.5lb system friction -->
+				</tableData>
+			</table>
+			</function>
+		</fcs_function>
+
+		<summer>
+			<input>fcs/elevator-stick-pos-norm</input>			
+			<input>fcs/elevator-trim-pos-norm</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>fcs/elevator-pos-norm</output>
+		</summer>
+
+		<aerosurface_scale name="elevator trim rad">
+			<input>fcs/pitch-trim-cmd-norm</input>
+			<range>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</range>
+			<clipto>
+				<min>-0.4363</min> <!-- down 25 deg in rads-->
+				<max>0.4363</max> <!-- up 25 deg in rads-->
+			</clipto>
+		</aerosurface_scale>
+
+		<aerosurface_scale name="elevator left pos rad">
+			<input>fcs/elevator-pos-norm</input>
+			<range>
+				<min>-0.489</min> <!-- up 28 deg in rads-->
+				<max>0.4</max> <!-- down 23 deg in rsds-->
+			</range>
+		</aerosurface_scale>
+
+		<aerosurface_scale name="elevator right pos rad">
+			<input>fcs/elevator-pos-norm</input>
+			<range>
+				<min>-0.489</min> <!-- up 28 deg in rads-->
+				<max>0.4</max> <!-- down 23 deg in rsds-->
+			</range>
+		</aerosurface_scale>		
+		
+	</channel>
+	
+	<channel name="Aileron-moments">
+
+		<fcs_function name="T4T/moments/wing/aileron-lbsft">
+			<function>
+				<sum>
+					<product>
+						<value> 0.65 </value> <!-- armature -->
+						<property>T4T/forces/wing_left/feedback_aileron-lbs</property>
+					</product>
+					<product>
+						<value> 0.65 </value> <!-- armature -->
+						<property>T4T/forces/wing_right/feedback_aileron-lbs</property>
+					</product>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="T4T/moments/wing/aileron_trim-lbsft">
+			<function>
+				<product>
+					<value> 1.5 </value> <!-- armature -->
+					<property>T4T/forces/wing/feedback_aileron_trim-lbs</property>
+				</product>
+			</function>
+		</fcs_function>
+	
+		<summer name="T4T/moments/wing/aileron_trim-stop">
+			<input>-T4T/moments/wing/aileron-lbsft</input>			
+			<input>T4T/moments/wing/aileron_trim-lbsft</input>
+		</summer>
+		
+		<summer name="T4T/forces/wing/feedback_aileron-lbs">
+			<input>T4T/forces/wing_left/feedback_aileron-lbs</input>			
+			<input>T4T/forces/wing_right/feedback_aileron-lbs</input>
+		</summer>
+
+		
+	</channel>	
+	
+	<channel name="Aileron">
+
+		<fcs_function name="T4T/aero/wing/aileron-psf">
+			<function>
+				<avg>
+					<property>T4T/aero/wing_left/_7_qbar-psf</property>
+					<property>T4T/aero/wing_right/_7_qbar-psf</property>
+				</avg>
+			</function>
+		</fcs_function>
+
+		<fcs_function name="fcs/aileron-stick-negpos">
+			<function>
+				<table>
+					<independentVar>T4T/aero/wing/aileron-psf</independentVar>
+					<tableData> <!-- all values approx 40lb -->
+						43.18		1.0
+						76.1		0.744
+						135			0.57
+						209			0.444
+						304			0.368
+						412.8		0.316
+						541.4		0.276
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<aerosurface_scale name="aileron stick">
+			<input>fcs/aileron-cmd-norm</input>
+			<range>
+				<min>-1</min>
+				<max>1</max>
+			</range>
+			<clipto>
+				<min>-fcs/aileron-stick-negpos</min> <!-- pitch up -->
+				<max>fcs/aileron-stick-negpos</max> <!-- pitch down -->
+			</clipto>
+			<output>fcs/aileron-stick-pos-norm</output>
+		</aerosurface_scale>
+				
+		<fcs_function name="aileron trim pos norm">
+			<function>
+			<table>
+				<independentVar lookup="row">T4T/aero/wing_right/_5_qbar-psf</independentVar>
+				<independentVar lookup="column">fcs/roll-trim-cmd-norm</independentVar>				
+				<tableData>
+								-1			0		1
+					0			0			0		0			
+					67.24		-0.295		0		0.295 <!-- 2.5lb system friction -->
+				</tableData>
+			</table>
+			</function>
+		</fcs_function>
+				
+		<switch name="aileron trim pos sample n hold">
+			<default value="/controls/flight/aileron-trim"/>
+			<test value="fcs/aileron-trim-pos-sample-n-hold">
+				gear/unit[1]/pos-norm ne 1
+			</test>
+			<output>/controls/flight/aileron-trim</output>
+		</switch>	
+		
+		<summer name="aileron pos norm">
+			<input>fcs/aileron-stick-pos-norm</input>			
+			<input>fcs/aileron-trim-pos-norm</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>fcs/aileron-pos-norm</output>
+		</summer>
+
+		<aerosurface_scale name="aileron trim rad">
+			<input>fcs/roll-trim-cmd-norm</input>
+			<range>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</range>
+			<clipto>
+				<min>-0.4363</min> <!-- down 25 deg in rads-->
+				<max>0.4363</max> <!-- up 25 deg in rads-->
+			</clipto>
+		</aerosurface_scale>
+
+		<aerosurface_scale name="aileron left pos rad">
+			<input>fcs/aileron-pos-norm</input>
+			<range>
+				<min>-0.454</min> <!-- up 26 deg in rads-->
+				<max>0.314</max> <!-- down 18 deg in rsds-->
+			</range>
+		</aerosurface_scale>
+
+		<aerosurface_scale name="aileron right pos rad">
+			<input>-fcs/aileron-pos-norm</input>
+			<range>
+				<min>-0.454</min> <!-- up 26 deg in rads-->
+				<max>0.314</max> <!-- down 18 deg in rsds-->
+			</range>
+		</aerosurface_scale>
+
+		<summer>
+			<input>fcs/aileron-pos-norm</input>
+			<output>fcs/left-aileron-pos-norm</output>
+		</summer>
+
+		<summer>
+			<input>-fcs/aileron-pos-norm</input>
+			<output>fcs/right-aileron-pos-norm</output>
+		</summer>
+
+	</channel>
+
+	<channel name="Rudder-moments">
+
+		<fcs_function name="T4T/moments/v-stab/rudder-lbsft">
+			<function>
+				<product>			
+					<value> 0.94 </value> <!-- armature -->
+					<property>T4T/forces/v-stab/feedback_rudder-lbs</property>
+				</product>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="T4T/moments/v-stab/rudder_trim-lbsft">
+			<function>
+				<product>
+					<value> 1.68 </value> <!-- armature -->
+					<property>T4T/forces/v-stab/feedback_rudder_trim-lbs</property>
+				</product>
+			</function>
+		</fcs_function>
+	
+		<summer name="T4T/moments/v-stab/rudder_trim-stop">
+			<input>-T4T/moments/v-stab/rudder-lbsft</input>			
+			<input>T4T/moments/v-stab/rudder_trim-lbsft</input>
+		</summer>
+		
+	</channel>
+	
+	<channel name="Rudder">
+	
+		<fcs_function name="fcs/rudder-stick-negpos">
+			<function>
+				<table>
+					<independentVar>T4T/aero/v-stab/qbar-psf</independentVar>
+					<tableData> <!-- all values approx 80lb -->
+						122.2		1.0
+						194.9		0.78
+						284.6		0.64
+						391.2		0.54
+						514.7		0.47
+						655.1		0.42
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<aerosurface_scale name="rudder stick">
+			<input>fcs/rudder-cmd-norm</input>
+			<range>
+				<min>-1</min>
+				<max>1</max>
+			</range>
+			<clipto>
+				<min>-fcs/rudder-stick-negpos</min> <!-- yaw left -->
+				<max>fcs/rudder-stick-negpos</max> <!-- yaw right -->
+			</clipto>
+			<output>fcs/rudder-stick-pos-norm</output>
+		</aerosurface_scale>
+		
+		<fcs_function name="rudder trim pos norm">
+			<function>
+			<table>
+				<independentVar lookup="row">T4T/aero/v-stab/qbar-psf</independentVar>
+				<independentVar lookup="column">fcs/yaw-trim-cmd-norm</independentVar>				
+				<tableData>
+								-1			0		1
+					0			0			0		0			
+					330			-0.233		0		0.233 <!-- 7lb system friction -->
+				</tableData>
+			</table>
+			</function>
+		</fcs_function>
+		
+		<summer>
+			<input>fcs/rudder-stick-pos-norm</input>			
+			<input>fcs/rudder-trim-pos-norm</input>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+			<output>fcs/rudder-pos-norm</output>
+		</summer>
+	
+		<aerosurface_scale name="rudder trim rad">
+			<input>fcs/yaw-trim-cmd-norm</input>
+			<range>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</range>
+			<clipto>
+				<min>-0.4363</min> <!-- left 25 deg in rads-->
+				<max>0.4363</max> <!-- right 25 deg in rads-->
+			</clipto>
+		</aerosurface_scale>
+
+		<aerosurface_scale name="rudder set rad">
+			<input>fcs/rudder-pos-norm</input>
+			<range>
+				<min>-0.489</min> <!-- right 28 deg in rads-->
+				<max>0.489</max> <!-- left 28 deg in rsds-->
+			</range>
+		</aerosurface_scale>
+		
+	</channel>
+	
+<!--
+	<channel name="Flaps">
+
+		<kinematic name="Flaps Control">
+			<input>fcs/flap-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position> 0 </position>
+					<time>     0 </time>
+				</setting>
+				<setting>
+					<position>0.5</position>
+					<time>     3 </time>
+				</setting>
+				<setting>
+					<position> 1 </position>
+					<time>     5 </time>
+				</setting>
+			</traverse>
+			<output>fcs/flap-pos-norm</output>
+		</kinematic>
+		<aerosurface_scale name="flap rad">
+			<input>fcs/flap-pos-norm</input>
+			<range>
+				<min>0</min>
+				<max>1.55</max>
+			</range>
+			<output>fcs/flap-rad</output>
+		</aerosurface_scale>
+	</channel>
+
+	<channel name="Landing Gear">
+
+		<kinematic name="Gear Control L">
+			<input>gear/gear-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position> 0 </position>
+					<time>     0 </time>
+				</setting>
+				<setting>
+					<position> 1 </position>
+					<time>     4 </time>
+				</setting>
+			</traverse>
+			<output>gear/unit[0]/pos-norm</output>
+			<output>gear/unit[2]/pos-norm</output>
+		</kinematic>
+
+
+		<kinematic name="Gear Control R">
+			<input>gear/gear-cmd-norm</input>
+			<traverse>
+				<setting>
+					<position> 0 </position>
+					<time>     0 </time>
+				</setting>
+				<setting>
+					<position> 1 </position>
+					<time>     4 </time>
+				</setting>
+			</traverse>
+			<output>gear/unit[1]/pos-norm</output>
+		</kinematic>
+
+	</channel>
+ -->
+</system>

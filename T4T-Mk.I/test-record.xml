@@ -1,0 +1,526 @@
+<?xml version="1.0"?>
+
+<!--	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> fcs/elevator-pos-norm </property>
+		<property> external_reactions/tail/location-x-in </property>		
+		<property> external_reactions/tail/z </property>		
+		<property> velocities/q-rad_sec </property>	
+	</output>	
+		
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>roll test</description>
+		<property> velocities/vtrue-kts </property>	
+		<property> fcs/left-aileron-pos-norm </property>
+		<property> T4T/forces/wing_left/z-lbs </property>		
+		<property> T4T/moments/wing_left/zy-lbsft </property>
+		<property> velocities/p-rad_sec </property>
+		<property> T4T/forces/wing_right/z-lbs </property>		
+		<property> T4T/moments/wing_right/zy-lbsft </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>roll test rotation velocity</description>
+		<property> velocities/vtrue-kts </property>	
+		<property> fcs/left-aileron-pos-norm </property>
+		<property> T4T/velocities/wing/_1_p_rotational-fps </property>		
+		<property> T4T/velocities/wing/_2_p_rotational-fps </property>
+		<property> T4T/velocities/wing/_3_p_rotational-fps </property>	
+		<property> T4T/velocities/wing/_4_p_rotational-fps </property>	
+		<property> T4T/velocities/wing/_5_p_rotational-fps </property>	
+		<property> T4T/velocities/wing/_6_p_rotational-fps </property>
+		<property> T4T/velocities/wing/_7_p_rotational-fps </property>
+		<property> T4T/velocities/wing/_8_p_rotational-fps </property>			
+	</output>
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>rotations velocities</description>
+		<property> velocities/vtrue-kts </property>	
+		<property> fcs/left-aileron-pos-norm </property>
+		<property> T4T/velocities/wing/_8_p_rotational-fps </property>
+		<property> T4T/velocities/wing/_8_q_rotational-fps </property>	
+		<property> T4T/velocities/wing/_8_r_rotational-fps </property>			
+	</output>	
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>wing flex</description>
+		<property> velocities/vtrue-kts </property>	
+		<property> fcs/left-aileron-pos-norm </property>
+		<property> T4T/aero/wing_left_flex </property>
+		<property> T4T/aero/wing_right_flex </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>wing dihedral</description>
+		<property> T4T/forces/wing_left/z-lbs </property>	
+		<property> T4T/aero/wing_left_flex </property>
+		<property> T4T/aero/wing_left/_8_alpha-rad </property>
+		<property> T4T/aero/wing_left/_8_beta-rad </property>
+		<property> T4T/aero/wing_left/_8_dihedral-rad </property>
+		<property> T4T/aero/wing_left/_8_incidence-rad </property>
+		<property> T4T/aero/wing_left/_8_AoA-rad </property>
+		<property> T4T/forces/wing_right/z-lbs </property>	
+		<property> T4T/aero/wing_right_flex </property>
+		<property> T4T/aero/wing_right/_8_alpha-rad </property>
+		<property> T4T/aero/wing_right/_8_beta-rad </property>
+		<property> T4T/aero/wing_right/_8_dihedral-rad </property>
+		<property> T4T/aero/wing_right/_8_incidence-rad </property>
+		<property> T4T/aero/wing_right/_8_AoA-rad </property>	
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>wing AoA</description>
+		<property> atitude/pitch-rad </property>
+		<property> atitude/roll-rad </property>
+		<property> T4T/aero/wing_left/_1_AoA-rad </property>
+		<property> T4T/aero/wing_left/_2_AoA-rad </property>
+		<property> T4T/aero/wing_left/_3_AoA-rad </property>
+		<property> T4T/aero/wing_left/_4_AoA-rad </property>
+		<property> T4T/aero/wing_left/_5_AoA-rad </property>
+		<property> T4T/aero/wing_left/_6_AoA-rad </property>
+		<property> T4T/aero/wing_left/_7_AoA-rad </property>
+		<property> T4T/aero/wing_left/_8_AoA-rad </property>
+		<property> T4T/aero/wing_right/_1_AoA-rad </property>
+		<property> T4T/aero/wing_right/_2_AoA-rad </property>
+		<property> T4T/aero/wing_right/_3_AoA-rad </property>
+		<property> T4T/aero/wing_right/_4_AoA-rad </property>
+		<property> T4T/aero/wing_right/_5_AoA-rad </property>
+		<property> T4T/aero/wing_right/_6_AoA-rad </property>
+		<property> T4T/aero/wing_right/_7_AoA-rad </property>
+		<property> T4T/aero/wing_right/_8_AoA-rad </property>	
+	</output>
+
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>h-stab</description>
+		<property> fcs/elevator-pos-norm </property>		
+		<property> T4T/velocities/wing_left/downwash-fps </property>
+		<property> velocities/w-aero-fps </property>
+		<property> T4T/velocities/h-stab/p_rotational-fps </property>
+		<property> T4T/velocities/h-stab/q_rotational-fps </property>
+		<property> T4T/velocities/h-stab_left/w-aero-fps </property>
+		<property> T4T/velocities/h-stab/uv-aero-fps </property>
+		<property> T4T/velocities/h-stab_left/true-fps </property>
+		<property> T4T/aero/h-stab_left/alpha-rad </property>
+		<property> T4T/aero/h-stab/beta-rad </property>
+		<property> T4T/aero/h-stab/dihedral-rad </property>	
+		<property> T4T/aero/h-stab/incidence-rad </property>	
+		<property> T4T/aero/h-stab_left/AoA-rad </property>			
+	</output>
+
+
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>h-stab</description>
+		<property> velocities/vtrue-kts </property>			
+		<property> fcs/aileron-pos-norm </property>
+		<property> velocities/p_rad-sec </property>
+		<property> T4T/forces/wing_left/feedback_aileron-lbs </property>
+		<property> T4T/forces/wing_right/feedback_aileron-lbs </property>
+		<property> T4T/forces/wing/feedback_aileron-lbs </property>			
+	</output>
+	
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>roll</description>
+		<property> /velocities/airspeed-kt </property>	
+		<property> aero/alpha-deg </property>
+		<property> aero/beta-deg </property>
+		<property> T4T/forces/LIFT2DRAG </property>
+		<property> T4T/moments/Centre_of_Lift-in </property>
+		
+	</output>
+	
+	
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>roll</description>
+		<property> velocities/vtrue-kts </property>
+		<property> fcs/left-aileron-pos-norm </property>		
+		<property> velocities/p-aero-rad_sec </property>
+		<property> velocities/q-aero-rad_sec </property>
+		<property> velocities/r-aero-rad_sec </property>	
+	</output>
+
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<description>wing dihedral</description>
+		<property> velocities/vtrue-kts </property>
+		<property> fcs/left-aileron-pos-norm </property>		
+		<property> velocities/p-aero-rad_sec </property>
+		<property> velocities/q-aero-rad_sec </property>
+		<property> velocities/r-aero-rad_sec </property>		
+		<property> T4T/forces/wing_left/z-lbs </property>	
+		<property> T4T/aero/wing_left_flex </property>
+		<property> T4T/aero/wing_left/_8_alpha-rad </property>
+		<property> T4T/aero/wing_left/_8_beta-rad </property>
+		<property> T4T/aero/wing_left/_8_dihedral-rad </property>
+		<property> T4T/aero/wing_left/_8_incidence-rad </property>
+		<property> T4T/aero/wing_left/_8_AoA-rad </property>
+		<property> T4T/forces/wing_right/z-lbs </property>	
+		<property> T4T/aero/wing_right_flex </property>
+		<property> T4T/aero/wing_right/_8_alpha-rad </property>
+		<property> T4T/aero/wing_right/_8_beta-rad </property>
+		<property> T4T/aero/wing_right/_8_dihedral-rad </property>
+		<property> T4T/aero/wing_right/_8_incidence-rad </property>
+		<property> T4T/aero/wing_right/_8_AoA-rad </property>	
+	</output>
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/moments/wing_left/zy-lbsft </property>
+		<property> T4T/forces/wing_left/_1_z-lbs </property>
+		<property> T4T/forces/wing_left/_2_z-lbs </property>
+		<property> T4T/forces/wing_left/_3_z-lbs </property>
+		<property> T4T/forces/wing_left/_4_z-lbs </property>
+		<property> T4T/forces/wing_left/_5_z-lbs </property>
+		<property> T4T/forces/wing_left/_6_z-lbs </property>
+		<property> T4T/forces/wing_left/_7_z-lbs </property>
+		<property> T4T/forces/wing_left/_8_z-lbs </property>		
+		<property> T4T/moments/wing_right/zy-lbsft </property>
+		<property> T4T/forces/wing_right/_1_z-lbs </property>
+		<property> T4T/forces/wing_right/_2_z-lbs </property>
+		<property> T4T/forces/wing_right/_3_z-lbs </property>
+		<property> T4T/forces/wing_right/_4_z-lbs </property>
+		<property> T4T/forces/wing_right/_5_z-lbs </property>
+		<property> T4T/forces/wing_right/_6_z-lbs </property>
+		<property> T4T/forces/wing_right/_7_z-lbs </property>
+		<property> T4T/forces/wing_right/_8_z-lbs </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/moments/wing_left/zy-lbsft </property>
+		<property> T4T/forces/wing_left/_1_z-lbs </property>
+		<property> T4T/forces/wing_left/_1_normal-lbs </property>
+		<property> T4T/forces/wing_left/_8_z-lbs </property>
+		<property> T4T/forces/wing_left/_8_normal-lbs </property>		
+		<property> T4T/moments/wing_right/zy-lbsft </property>
+		<property> T4T/forces/wing_right/_1_z-lbs </property>
+		<property> T4T/forces/wing_right/_1_normal-lbs </property>
+		<property> T4T/forces/wing_right/_8_z-lbs </property>
+		<property> T4T/forces/wing_right/_8_normal-lbs </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/moments/wing_left/zy-lbsft </property>
+		<property> T4T/coefficients/wing_left/_1_CN-sqft </property>
+		<property> T4T/aero/wing_left/_1_qbar-psf </property>
+		<property>T4T/structure/wing/_1_incidence-cos</property>
+		<property>T4T/aero/wing_left/_1_dihedral-cos</property>		
+		<property> T4T/coefficients/wing_left/_8_CN-sqft </property>
+		<property> T4T/aero/wing_left/_8_qbar-psf </property>
+		<property>T4T/structure/wing/_8_incidence-cos</property>
+		<property>T4T/aero/wing_left/_8_dihedral-cos</property>			
+		<property> T4T/moments/wing_right/zy-lbsft </property>
+		<property> T4T/coefficients/wing_right/_1_CN-sqft </property>
+		<property> T4T/aero/wing_right/_1_qbar-psf </property>
+		<property>T4T/structure/wing/_1_incidence-cos</property>
+		<property>T4T/aero/wing_right/_1_dihedral-cos</property>				
+		<property> T4T/coefficients/wing_right/_8_CN-sqft </property>
+		<property> T4T/aero/wing_right/_8_qbar-psf </property>
+		<property>T4T/structure/wing/_8_incidence-cos</property>
+		<property>T4T/aero/wing_right/_8_dihedral-cos</property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/coefficients/wing_left/_1_CN </property>
+		<property> T4T/coefficients/wing_left/_2_CN </property>
+		<property> T4T/coefficients/wing_left/_3_CN </property>
+		<property> T4T/coefficients/wing_left/_4_CN </property>
+		<property> T4T/coefficients/wing_left/_5_CN </property>
+		<property> T4T/coefficients/wing_left/_6_CN </property>
+		<property> T4T/coefficients/wing_left/_7_CN </property>
+		<property> T4T/coefficients/wing_left/_8_CN </property>
+		<property> T4T/coefficients/wing_right/_1_CN </property>
+		<property> T4T/coefficients/wing_right/_2_CN </property>
+		<property> T4T/coefficients/wing_right/_3_CN </property>
+		<property> T4T/coefficients/wing_right/_4_CN </property>
+		<property> T4T/coefficients/wing_right/_5_CN </property>
+		<property> T4T/coefficients/wing_right/_6_CN </property>
+		<property> T4T/coefficients/wing_right/_7_CN </property>
+		<property> T4T/coefficients/wing_right/_8_CN </property>			
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/aero/wing_left/_1_AoA-rad </property>
+		<property> T4T/aero/wing_left/_2_AoA-rad </property>
+		<property> T4T/aero/wing_left/_3_AoA-rad </property>
+		<property> T4T/aero/wing_left/_4_AoA-rad </property>
+		<property> T4T/aero/wing_left/_5_AoA-rad </property>
+		<property> T4T/aero/wing_left/_6_AoA-rad </property>
+		<property> T4T/aero/wing_left/_7_AoA-rad </property>
+		<property> T4T/aero/wing_left/_8_AoA-rad </property>
+		<property> T4T/aero/wing_right/_1_AoA-rad </property>
+		<property> T4T/aero/wing_right/_2_AoA-rad </property>
+		<property> T4T/aero/wing_right/_3_AoA-rad </property>
+		<property> T4T/aero/wing_right/_4_AoA-rad </property>
+		<property> T4T/aero/wing_right/_5_AoA-rad </property>
+		<property> T4T/aero/wing_right/_6_AoA-rad </property>
+		<property> T4T/aero/wing_right/_7_AoA-rad </property>
+		<property> T4T/aero/wing_right/_8_AoA-rad </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/velocities/wing_left/_1_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_2_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_3_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_4_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_5_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_6_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_7_u-aero-fps </property>
+		<property> T4T/velocities/wing_left/_8_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_1_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_2_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_3_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_4_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_5_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_6_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_7_u-aero-fps </property>
+		<property> T4T/velocities/wing_right/_8_u-aero-fps </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/aero/v-stab/AoA-rad </property>	
+		<property> T4T/forces/v-stab/y-lbs </property>
+		<property> T4T/velocities/v-stab/v-aero-fps </property>
+		<property> T4T/velocities/v-stab/uw-aero-fps </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/vtrue-kts </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/forces/wing/z-lbs </property>		
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> T4T/forces/wing_left/_1_z-lbs </property>
+		<property> T4T/forces/wing_left/_2_z-lbs </property>
+		<property> T4T/forces/wing_left/_3_z-lbs </property>
+		<property> T4T/forces/wing_left/_4_z-lbs </property>
+		<property> T4T/forces/wing_left/_5_z-lbs </property>
+		<property> T4T/forces/wing_left/_6_z-lbs </property>
+		<property> T4T/forces/wing_left/_7_z-lbs </property>
+		<property> T4T/forces/wing_left/_8_z-lbs </property>
+		<property> T4T/forces/wing_left/z-lbs </property>
+		<property> T4T/moments/wing_left/zy-lbsft </property>		
+		<property> T4T/forces/wing_right/_1_z-lbs </property>
+		<property> T4T/forces/wing_right/_2_z-lbs </property>
+		<property> T4T/forces/wing_right/_3_z-lbs </property>
+		<property> T4T/forces/wing_right/_4_z-lbs </property>
+		<property> T4T/forces/wing_right/_5_z-lbs </property>
+		<property> T4T/forces/wing_right/_6_z-lbs </property>
+		<property> T4T/forces/wing_right/_7_z-lbs </property>
+		<property> T4T/forces/wing_right/_8_z-lbs </property>
+		<property> T4T/forces/wing_right/z-lbs </property>
+		<property> T4T/moments/wing_right/zy-lbsft </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> /environment/wind-from-heading-deg </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> aero/alpha-deg </property>
+		<property> aero/beta-deg </property>			
+		<property> aero/beta-rad </property>
+		<property> T4T/aero/wing_left/_1_beta-rad </property>
+		<property> T4T/aero/wing_left/_2_beta-rad </property>
+		<property> T4T/aero/wing_left/_3_beta-rad </property>
+		<property> T4T/aero/wing_left/_4_beta-rad </property>
+		<property> T4T/aero/wing_left/_5_beta-rad </property>
+		<property> T4T/aero/wing_left/_6_beta-rad </property>
+		<property> T4T/aero/wing_left/_7_beta-rad </property>
+		<property> T4T/aero/wing_left/_8_beta-rad </property>
+		<property> T4T/aero/wing_right/_1_beta-rad </property>
+		<property> T4T/aero/wing_right/_2_beta-rad </property>
+		<property> T4T/aero/wing_right/_3_beta-rad </property>
+		<property> T4T/aero/wing_right/_4_beta-rad </property>
+		<property> T4T/aero/wing_right/_5_beta-rad </property>
+		<property> T4T/aero/wing_right/_6_beta-rad </property>
+		<property> T4T/aero/wing_right/_7_beta-rad </property>
+		<property> T4T/aero/wing_right/_8_beta-rad </property>		
+	</output>
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> /environment/wind-from-heading-deg </property>	
+		<property> external_reactions/wing/location-y-in </property>
+		<property> T4T/aero/wing_left/_1_beta-rad </property>
+		<property> T4T/aero/wing_left/_1_AoA-rad </property>
+		<property> T4T/aero/wing_left/_8_beta-rad </property>
+		<property> T4T/aero/wing_left/_8_AoA-rad </property>		
+		<property> T4T/aero/wing_right/_1_beta-rad </property>
+		<property> T4T/aero/wing_right/_1_AoA-rad </property>
+		<property> T4T/aero/wing_right/_8_beta-rad </property>
+		<property> T4T/aero/wing_right/_8_AoA-rad </property>
+		<property> T4T/aero/v-stab/beta-rad </property>
+		<property> T4T/aero/v-stab/AoA-rad </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> /environment/wind-from-heading-deg </property>
+		<property> T4T/aero/v-stab/beta-rad </property>
+		<property> T4T/velocities/v-stab/w-aero-fps </property>		
+		<property>T4T/velocities/fuselage/u-aero-fps</property>
+		<property> T4T/aero/v-stab/AoA-rad </property>		
+	</output>	
+
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/wing/x </property>
+		<property> external_reactions/wing/y </property>
+		<property> external_reactions/wing/z </property>
+		<property> external_reactions/wing/location-x-in </property>
+		<property> external_reactions/wing/location-y-in </property>
+		<property> external_reactions/wing/location-z-in </property>
+		<property> T4T/moments/wing/zy-lbsft </property>		
+		<property>T4T/forces/wing/absolute_Z-lbs</property>		
+	</output>
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/wing/x </property>
+		<property> external_reactions/wing/y </property>
+		<property> external_reactions/wing/z </property>
+		<property> external_reactions/wing/location-x-in </property>
+		<property> external_reactions/wing/location-y-in </property>
+		<property> external_reactions/wing/location-z-in </property>		
+		<property> external_reactions/tail/x </property>
+		<property> external_reactions/tail/y </property>
+		<property> external_reactions/tail/z </property>
+		<property> external_reactions/tail/location-x-in </property>
+		<property> external_reactions/tail/location-y-in </property>
+		<property> external_reactions/tail/location-z-in </property>
+		<property> external_reactions/drag/x </property>
+		<property> external_reactions/drag/y </property>
+		<property> external_reactions/drag/z </property>
+		<property> external_reactions/drag/location-x-in </property>
+		<property> external_reactions/drag/location-y-in </property>
+		<property> external_reactions/drag/location-z-in </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/wing/x </property>
+		<property> external_reactions/wing/y </property>
+		<property> external_reactions/wing/z </property>
+		<property> T4T/moments/wing/zy-lbsft </property>
+		<property> external_reactions/wing/location-x-in </property>
+		<property> external_reactions/wing/location-y-in </property>
+		<property> external_reactions/wing/location-z-in </property>				
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> T4T/forces/wing_left/z-lbs </property>
+		<property> T4T/forces/wing_left/y-lbs </property>
+		<property> T4T/forces/wing_left/x-lbs </property>		
+		<property> T4T/forces/wing_right/z-lbs </property>
+		<property> T4T/forces/wing_right/y-lbs </property>
+		<property> T4T/forces/wing_right/x-lbs </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/v-aero-fps </property>
+		<property> T4T/velocities/v-stab/p_rotational-fps </property>		
+		<property> T4T/velocities/v-stab/q_rotational-fps </property>
+		<property> T4T/velocities/v-stab/r_rotational-fps </property>		
+		<property> T4T/aero/v-stab/AoA-deg </property>
+		<property> T4T/velocities/fuselage/u-aero-fps </property>	
+		<property> T4T/velocities/v-stab/v-aero-fps </property>			
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> T4T/aero/wing_left/_1_AoA-deg </property>
+		<property> T4T/aero/wing_right/_1_AoA-deg </property>
+		<property> T4T/aero/wing_left/_2_AoA-deg </property>
+		<property> T4T/aero/wing_right/_2_AoA-deg </property>
+		<property> T4T/aero/wing_left/_3_AoA-deg </property>
+		<property> T4T/aero/wing_right/_3_AoA-deg </property>
+		<property> T4T/aero/wing_left/_4_AoA-deg </property>
+		<property> T4T/aero/wing_right/_4_AoA-deg </property>
+		<property> T4T/aero/wing_left/_5_AoA-deg </property>
+		<property> T4T/aero/wing_right/_5_AoA-deg </property>
+		<property> T4T/aero/wing_left/_6_AoA-deg </property>
+		<property> T4T/aero/wing_right/_6_AoA-deg </property>
+		<property> T4T/aero/wing_left/_7_AoA-deg </property>
+		<property> T4T/aero/wing_right/_7_AoA-deg </property>
+		<property> T4T/aero/wing_left/_8_AoA-deg </property>
+		<property> T4T/aero/wing_right/_8_AoA-deg </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> velocities/p-rad_sec </property>		
+		<property> velocities/q-rad_sec </property>
+		<property> velocities/r-rad_sec </property>	
+		<property> external_reactions/tail/x </property>
+		<property> external_reactions/tail/y </property>
+		<property> external_reactions/tail/z </property>
+		<property> external_reactions/tail/location-x-in </property>
+		<property> external_reactions/tail/location-y-in </property>
+		<property> external_reactions/tail/location-z-in </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/tail/x </property>
+		<property> external_reactions/tail/y </property>
+		<property> external_reactions/tail/z </property>
+		<property> external_reactions/tail/location-x-in </property>
+		<property> external_reactions/tail/location-y-in </property>
+		<property> external_reactions/tail/location-z-in </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/wings/x </property>
+		<property> external_reactions/wings/y </property>
+		<property> external_reactions/wings/z </property>
+		<property> T4T/moments/wing/zx-in </property>
+		<property> T4T/moments/wings/zy-in </property>	
+		<property> T4T/moments/wing/zz-in </property>		
+	</output>
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> external_reactions/wings/x </property>	
+		<property> external_reactions/wings/y </property>
+		<property> T4T/forces/wing_left/y-lbs </property>
+		<property> T4T/forces/wing_right/y-lbs </property>
+		<property> external_reactions/wings/z </property>		
+	</output>
+	
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> T4T/forces/wing_left/z-lbs </property>
+		<property> T4T/forces/wing_right/z-lbs </property>
+		<property> T4T/forces/wings/z-lbs </property>		
+		<property> external_reactions/wings/z </property>		
+	</output>
+	
+-->	
+
+	<output name="Test_Output.csv" type="CSV" rate="10">
+		<property> T4T/moments/wing/CoP_y-ft </property>
+		<property> T4T/moments/wing_left/zy-lbsft </property>
+		<property> T4T/moments/wing_right/zy-lbsft </property>
+		<property> T4T/forces/wings/abs_z-lbs </property>	
+		<property> T4T/moments/wings/zy-in </property>			
+	</output>
+	
+
+	

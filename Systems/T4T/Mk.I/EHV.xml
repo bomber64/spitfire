@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, Cd 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="Electrical_Hydraulic_Vacuum_Pneumatic">
+	<!-- Hydraulics -->
+ 	<property type="double" value="1"> hydraulic/damage</property>
+	<property type="double" value="1"> hydraulic/Co2-damage</property>	
+	<property type="bool" value="0"> hydraulic/Co2-switch </property>
+	
+	<!-- Pneumatics -->	
+ 	<property type="double" value="1"> pneumatic/LP_damage</property>
+	<property type="double" value="1"> pneumatic/HP_damage</property>
+	<property type="double" value="0"> flap/lowered</property>
+	<property type="double" value="0"> brake/rudder</property>
+	<property type="double" value="1"> gear/lowered</property>
+	<property type="double" value="0"> pneumatic/cyclinder_pressure_lbs</property>		
+	
+    <channel name="Electrical">
+
+	
+
+    </channel>
+	
+    <channel name="Hydraulic">
+	
+		<!-- Hydraulics upto Pressure --> 
+			<fcs_function name="propulsion/engine[0]/hydraulic_pressure">
+				<function>
+					<product>
+						<table>
+							<independentVar>propulsion/engine[0]/engine-rpm</independentVar>
+							<tableData>                  
+								0      0
+								985		1          
+							</tableData>
+						</table>
+						<property>hydraulic/damage</property>
+					</product>
+				</function>
+			</fcs_function>
+						
+            <kinematic name="hydraulic/emergency_pressure">
+                <input>hydraulic/Co2-switch</input>
+                <traverse>
+                    <setting>
+                        <position>0</position>
+                        <time>0</time>
+                    </setting>
+                    <setting>
+                        <position>1</position>
+                        <time>7</time>
+                    </setting>
+                </traverse>
+            </kinematic>	
+		
+    </channel>
+	
+    <channel name="Vacuum">
+
+
+
+    </channel>
+
+    <channel name="Pneumatics">
+	
+		<!-- Air System Pressure 320lb max 
+		Brake pressure 18lb
+		-->	
+	
+		<!-- Pneumatics Low Pressure Pump-->    
+         <fcs_function name="pneumatic/charge">
+            <function>
+				<product>
+					<table>
+						<independentVar>propulsion/engine/engine-rpm</independentVar>
+						<tableData>                  
+							0      0
+							500		1
+							3000	5            
+						</tableData>
+					</table>
+					<property>pneumatic/LP_damage</property>
+				</product>
+            </function>
+		</fcs_function>
+
+        <!-- Cylinder Charging or Venting -->
+		<fcs_function name="pneumatic/charge-or-vent">
+			<function>
+				<sum>
+					<property>pneumatic/charge</property>
+					<property>brake/venting</property>
+					<table>
+						<independentVar>pneumatic/HP_damage</independentVar>
+						<tableData>
+							0	-200
+							1	0
+						</tableData>
+					</table>
+				</sum>
+			</function>
+		</fcs_function>		
+					
+        <!-- Pressure trigger stops --> 			
+		<switch name="pneumatic/pressure-stop">
+			<default value="0"/>
+			<test logic="AND" value="1">  <!-- Lo Limit Stop -->
+				pneumatic/cyclinder_pressure_lbs LE 0
+				pneumatic/charge-or-vent LE 0
+			</test>
+			<test logic="AND" value="1">  <!-- Hi Limit Stop -->
+				pneumatic/cyclinder_pressure_lbs GE 320
+				pneumatic/charge-or-vent GE 0
+			</test>			
+		</switch>
+			
+        <!-- High Pressure Cylinder -->
+		<integrator name="pneumatic/cyclinder_pressure_lbs">
+			<input>pneumatic/charge-or-vent</input>
+			<trigger>pneumatic/pressure-stop</trigger>
+			<c1>1</c1>
+			<clipto>
+				<min> 0 </min>
+				<max> 320 </max>
+			</clipto>
+			<output>pneumatic/cyclinder_pressure_lbs</output>
+		</integrator>
+
+	</channel>
+
+</system>

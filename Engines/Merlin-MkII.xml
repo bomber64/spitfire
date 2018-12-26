@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+
+    Merlin II (RM 1S)
+	
+	Take-off Power 880 hp (656 kW) at 3,000 rpm
+
+	1,030 hp (775 kW) at 3,000 rpm at 5,500 ft (1,676 m) using + 6 psi boost 
+	
+	https://en.wikipedia.org/wiki/List_of_Rolls-Royce_Merlin_variants
+	
+	http://www.spitfireperformance.com/k9793.html
+	
+	http://www.spitfireperformance.com/n3171.html
+
+
+	MERLIN II AND III AERO-ENGINES
+	87 octane
+
+	(i)		At maximum take-off 78.5 gallons per hour.
+			conditions at sea level 890 b.h.p. at 2,850 r.p.m. +6.25 psi boost.
+
+	(ii)	At maximum climbing 71.5 gallons per hour.
+			conditions at sea level 875 b.h.p. at 2,600 r.p.m. +6.25 psi boost.
+			
+	(iii)	At maximum rich cruising 58.8 gallons per hour.
+			conditions at sea level 790 b.h.p. at 2,600 r.p.m. +6.25 psi boost.
+
+	(iv) 	At automatic weak cruising 45.3 gallons per hour.
+			conditions at sea level 685 b.h.p at 2,600 r.p.m. at +2.25 psi boost.
+
+	(v)		At combat (5 mins limit)
+			conditions at 16,250 ft 1,030 b.h.p at 3,000 r.p.m. +6.25 psi boost.
+
+
+-->
+
+
+<piston_engine name="Merlin_II">
+    <injected>0</injected>
+    <displacement unit="IN3"> 1650</displacement> 
+			<!-- this value is used to determine mass air and fuel flow which impacts engine power and cooling. -->
+    <bore unit="IN"> 5.4  </bore>
+			<!-- cylinder bore is currently unused. -->
+    <stroke unit="IN"> 6.0 </stroke>
+			<!-- piston stroke is used to determine the mean piston speed. 
+			A longer stroke results in an engine that does not work as well at higher speeds -->
+    <cylinders> 12 </cylinders>
+			<!-- number of cylinders scales the cylinder head mass. -->
+	<compression-ratio> 6 </compression-ratio>
+			<!-- the compression ratio affects the change in volumetric efficiency with altitude.-->
+    <peak-piston-speed>	78.5 </peak-piston-speed>	
+			<!-- 3.142 * stroke/12 * maxrpm/60 -->			
+	<maxhp> 570 </maxhp>
+			<!-- 570 this value is the nominal power the unaspirated engine creates at maxrpm
+			It will determine bsfc if that tag is not input. It also determines the starter motor power. -->   
+	<cycles> 4 </cycles>
+			<!-- Designate a 2 or 4 stroke engine. Currently only the 4 stroke engine is supported. -->
+    <idlerpm> 750 </idlerpm>
+			<!-- this value affects the throttle fall off.
+			The engine stops running when its RPM's are less than 80% of this value.
+			The engine starts running when its RPM's are greater than 80% of this value. -->
+    <maxrpm> 3000 </maxrpm>
+			<!-- this value is used to calculate air-box resistance and BSFC.
+			It also affects oil pressure among other things. -->	
+    <static-friction> 1 </static-friction>		
+	<starter-torque> 500 </starter-torque>		
+
+	
+		<!-- AIR INTAKE -->
+		
+	<ram-air-factor> 0 </ram-air-factor>
+			<!-- 0.993 this number creates a pressure increase with an increase in dynamic pressure (aircraft speed). 
+				is the efficiency of the air scoop intake. 0 turns ram air off. Default is 1. -->
+	<air-intake-impedance-factor> 0.054 </air-intake-impedance-factor>
+			<!-- this number is the pressure drop across the intake system cause by the inlet filter and piping -->
+	
+		<!-- THROTTLE -->		
+		
+    <maxmp unit="INHG"> 29.92 </maxmp>
+			<!-- this value is the nominal maximum manifold pressure at sea-level without boost.
+			Along with maxrpm it determines the resistance of the aircraft's intake system. 
+			See air-intake-impedance-factor  -->
+
+	<minmp unit="INHG"> 10.6 </minmp>
+			<!-- this value is the nominal idle manifold pressure at sea-level without boost. 
+			It is determined by reducing the throttle and recording the Manifold pressure when the engine RPM is at the required idle speed -->
+	
+		<!-- BOOST -->
+				
+   	<boostmanual> 1 </boostmanual>
+			<!-- whether a multispeed supercharger will manually or automatically shift boost speeds.
+			On manual shifting the boost speeds is accomplished by controlling propulsion/engine/boostspeed -->
+  	<numboostspeeds> 1 </numboostspeeds>
+			<!-- zero (or not present) for a naturally-aspirated engine, either 1, 2 or 3 for a boosted engine.
+			This corresponds to the number of supercharger speeds. Merlin XII had 1 speed, Merlin 61 had 2, 
+			a late Griffon engine apparently had 3. No known engine more than 3, although some German engines 
+			apparently had a continuously variable-speed supercharger. -->
+	<boostoverride> 0 </boostoverride>
+			<!-- zero (or not present) results in the supercharger having a waste gate that prevents overboosting -->
+	<boost-loss-factor> 0 </boost-loss-factor>
+			<!-- has a relationship with the engines RPM to determine the power taken by the supercharger -->
+			
+    <ratedboost1 unit="INHG"> 12.73 </ratedboost1>
+			<!-- the absolute rated boost above sea level ambient
+			0.0 PSI = 0.01 inHg			
+			2.25 PSI = 4.58 inHg
+			6.25 PSI = 12.73 inHg
+			9 PSI = 18.32 inHg
+			12 PSI = 24.43 inHg
+			18 PSI = 36.65 inHg
+			24 PSI = 48.86 inHg
+			30 PSI = 61.1 inHg
+			36 PSI = 73.29 inHg				
+			for a given boost speed, in psi -->
+    <ratedrpm1> 3000 </ratedrpm1>
+			<!-- The rpm at which rated boost is developed  -->
+    <ratedpower1> 1030	</ratedpower1>	 <!-- 1030  -->
+	<ratedaltitude1 unit="FT"> 6250 </ratedaltitude1> <!-- results in 5,500ft in-game static test FTH -->
+			<!-- The altitude up to which rated boost can be maintained.
+			
+			Up to this altitude the boost is maintained constant for a given throttle position by the BCV or wastegate.
+			Beyond this altitude the manifold pressure must drop, since the supercharger is now at maximum unregulated
+			output. The actual pressure multiplier of the supercharger system is calculated at initialisation from this
+			value. -->
+			
+
+		<!-- POWER PRODUCTION -->
+
+	<sparkfaildrop> 0.1 </sparkfaildrop>
+			<!-- this is the percentage drop in horsepower for single magneto operation, 10% equaals 0.1 -->	
+    <volumetric-efficiency> 0.65 </volumetric-efficiency>
+			<!-- Controls how efficient the intake/outlet system is in allowing mixture to pass through the engine.
+			Adjust this value to give correct fuel consumption at a known rpm and manifold pressure.
+			For this engine it is 40 imperial GPH at 2,600 rpm at sea level inHg of 29.92.
+			This value is exposed on the property tree so it may be altered at runtime -->
+	<bsfc unit="LBS/HP*HR"> 0.376 </bsfc>
+			<!-- Adjust this to produce the known power at a known rpm and manifold pressure.
+			For this engine it is 570 b.h.p. at 3,000 rpm at sea level inHg of 29.92.
+			This value is exposed on the property tree so it may be altered at runtime.	--> 
+
+		<!-- COOLING -->
+
+    <cylinder-head-mass unit="LBS"> 58 </cylinder-head-mass>
+			<!-- The weight of a single cylinder head.... take the weight of the dry engine divide by 2 and then divide by number of cylinders
+			The larger the value the slower the changes in engine temperature. -->
+	<cooling-factor> 0.65 </cooling-factor>
+			<!-- Controls how efficient the aircraft cooling system is.
+			Adjust this value to create a 5 min max usage before engine overheating and also simulate the cowl flaps.
+			This value is exposed on the property tree so it may be altered at runtime. -->
+
+		<!-- TUNEING -->
+		
+		<!--
+		    * Set <ram-air-factor> to zero.
+			* Adjust atmospherics with 'weather' to STANDARD DAY.
+    		* Using a constant speed load, set the engine model to full throttle and rated RPM.
+			
+		@ Sea Level (static)		
+    		* Adjust <air-intake-impedance-factor> to achieve the proper static full throttle manifold pressure.			
+    		* Adjust <volumetric-efficiency> to achieve known fuel flow rate.		
+    		* Adjust <bsfc> to achieve rated power.
+			
+	Boosted Engines Only
+	
+		@ Full Throttle Height (static)
+    		* Adjust <volumetric-efficiency> to achieve max fuel flow rate, leaning engine as required.	
+    		* Adjust <bsfc> to achieve rated power.
+
+		@ Full Throttle Height (dynamic)
+    		* At rated climb airspeed and RPM, adjust <ram-air-factor> to achieve Full Throttle Height
+    		* At rated max airspeed and RPM, adjust <ram-air-factor> to achieve Full Throttle Height
+	
+		-->
+	
+</piston_engine>

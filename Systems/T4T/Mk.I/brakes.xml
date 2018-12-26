@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, Cd 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="brakes">
+
+ 	<property type="bool" value="1"> /fdm/jsbsim/brake/parking_cmd</property>	
+	
+	<channel name="brake">
+	
+        <!-- Parking Brake -->
+			<switch name="brake/parking">
+				<default value="0.0"/>
+				<test value="0.75">
+					brake/parking_cmd EQ 1
+				</test>
+			</switch>
+			
+        <!-- Cylinder Pressure -->
+         <fcs_function name="brake/minimum_pressure">
+            <function>
+				<table>
+					<independentVar>pneumatic/cyclinder_pressure_lbs</independentVar>
+					<tableData>                  
+						0      0
+						18		1        
+					</tableData>
+				</table>
+            </function>
+		</fcs_function>
+
+        <!-- Left Main Wheel Down and locked -->
+			<switch name="gear/unit[0]/down-n-locked">
+				<default value="0"/>
+				<test value="1">
+					gear/unit[0]/pos-norm GT 0.99
+					gear/unit[0]/position_locked EQ 1
+				</test>
+			</switch>
+			
+        <!-- Right Main Wheel Down and locked -->
+			<switch name="gear/unit[1]/down-n-locked">
+				<default value="0"/>
+				<test value="1">
+					gear/unit[1]/pos-norm GT 0.99
+					gear/unit[1]/position_locked EQ 1
+				</test>
+			</switch>	
+			
+        <!-- Left Main Wheel Brake -->			
+		<fcs_function name="brake/rudder_left">
+			<function>
+				<product>
+					<property>brake/minimum_pressure</property>					
+					<property>gear/unit[0]/down-n-locked</property>				
+					<table>
+						<independentVar>fcs/rudder-stick-pos-norm</independentVar>
+						<tableData>
+							0	0
+							1	0.25
+						</tableData>
+					</table>
+				</product>
+			</function>
+		</fcs_function>		
+
+        <!-- Right Main Wheel Brake -->
+		<fcs_function name="brake/rudder_right">
+			<function>
+				<product>
+					<property>brake/minimum_pressure</property>	
+					<property>gear/unit[1]/down-n-locked</property>				
+					<table>
+						<independentVar>fcs/rudder-stick-pos-norm</independentVar>
+						<tableData>
+							-1	0.25
+							0	0
+						</tableData>
+					</table>
+				</product>
+			</function>
+		</fcs_function>
+
+
+         <!-- Pneumatic Braking -->
+		 
+		<summer>
+			<input>brake/rudder_left</input>			
+			<input>brake/rudder_right</input>
+			<output>brake/rudder</output>
+		</summer>
+		 
+		<fcs_function name="brake/venting">
+			<function>			
+				<table>
+					<independentVar>brake/rudder</independentVar>
+					<tableData>
+						0		0
+						0.25	-5
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>		 
+		 						
+
+			
+         <!-- Total Left Braking -->	      
+         <fcs_function name="brake/brake_left">
+            <function>
+				<sum>
+					<property>brake/parking</property>
+					<product>
+						<property>brake/minimum_pressure</property>
+						<property>brake/rudder_left</property>
+					</product>				  
+               </sum>
+            </function>
+			<output>fcs/left-brake-cmd-norm</output>
+		</fcs_function>	
+			
+         <!-- Total Right Braking -->			    
+         <fcs_function name="brake/brake_right">
+            <function>
+				<sum>
+					<property>brake/parking</property>
+					<product>
+						<property>brake/minimum_pressure</property>
+						<property>brake/rudder_right</property>					
+					</product>				  
+               </sum>
+            </function>
+			<output>fcs/right-brake-cmd-norm</output>
+		</fcs_function>
+
+        </channel>
+
+</system>

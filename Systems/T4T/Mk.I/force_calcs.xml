@@ -1,0 +1,2301 @@
+<?xml version="1.0"?>
+
+<!--
+**************************************************************************
+
+Copyright (c) 2016 Simon 'bomber' Morley
+simonbomber64 at googlemail.com
+
+This work is licensed under the 
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
+To view a copy of this license, 
+visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or 
+send a letter to Creative Commons, PO Box 1866, Mountain View, Cd 94042, USA.
+
+Attribution,  You must give appropriate credit, provide a link to the license, 
+and indicate if changes were made. You may do so in any reasonable manner, 
+but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial,  You may not use the material for commercial purposes.
+
+ShareAlike,  If you remix, transform, or build upon the material, 
+you must distribute your contributions under the same license as the original. 
+
+**************************************************************************
+-->
+
+<system name="Force Calcs">
+
+	<channel name="dynamic-pressures">
+	
+	<!-- ####   left   #### -->
+		
+	<fcs_function name="T4T/aero/wing_left/_1_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_1_true-fps</property>
+				<property>T4T/velocities/wing_left/_1_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/wing_left/_2_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_2_true-fps</property>
+				<property>T4T/velocities/wing_left/_2_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_3_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_3_true-fps</property>
+				<property>T4T/velocities/wing_left/_3_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_4_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_4_true-fps</property>
+				<property>T4T/velocities/wing_left/_4_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_5_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_5_true-fps</property>
+				<property>T4T/velocities/wing_left/_5_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_6_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_6_true-fps</property>
+				<property>T4T/velocities/wing_left/_6_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_7_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_7_true-fps</property>
+				<property>T4T/velocities/wing_left/_7_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_left/_8_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_left/_8_true-fps</property>
+				<property>T4T/velocities/wing_left/_8_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>	
+	
+	<fcs_function name="T4T/aero/wing_left/qbar-psf">
+		<function>
+			<avg>				
+				<property>T4T/aero/wing_left/_1_qbar-psf</property> 
+				<property>T4T/aero/wing_left/_2_qbar-psf</property>
+				<property>T4T/aero/wing_left/_3_qbar-psf</property>
+				<property>T4T/aero/wing_left/_4_qbar-psf</property>
+				<property>T4T/aero/wing_left/_5_qbar-psf</property>
+				<property>T4T/aero/wing_left/_6_qbar-psf</property>
+				<property>T4T/aero/wing_left/_7_qbar-psf</property>
+				<property>T4T/aero/wing_left/_8_qbar-psf</property>
+			</avg>
+		</function>	
+	</fcs_function>
+
+	<!-- ####   right   #### -->
+	
+	<fcs_function name="T4T/aero/wing_right/_1_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_1_true-fps</property>
+				<property>T4T/velocities/wing_right/_1_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/wing_right/_2_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_2_true-fps</property>
+				<property>T4T/velocities/wing_right/_2_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_3_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_3_true-fps</property>
+				<property>T4T/velocities/wing_right/_3_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_4_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_4_true-fps</property>
+				<property>T4T/velocities/wing_right/_4_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_5_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_5_true-fps</property>
+				<property>T4T/velocities/wing_right/_5_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_6_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_6_true-fps</property>
+				<property>T4T/velocities/wing_right/_6_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_7_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_7_true-fps</property>
+				<property>T4T/velocities/wing_right/_7_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right/_8_qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/wing_right/_8_true-fps</property>
+				<property>T4T/velocities/wing_right/_8_true-fps</property>
+			</product>
+		</function>
+	</fcs_function>		
+
+	<fcs_function name="T4T/aero/wing_right/qbar-psf">
+		<function>
+			<avg>				
+				<property>T4T/aero/wing_right/_1_qbar-psf</property> 
+				<property>T4T/aero/wing_right/_2_qbar-psf</property>
+				<property>T4T/aero/wing_right/_3_qbar-psf</property>
+				<property>T4T/aero/wing_right/_4_qbar-psf</property>
+				<property>T4T/aero/wing_right/_5_qbar-psf</property>
+				<property>T4T/aero/wing_right/_6_qbar-psf</property>
+				<property>T4T/aero/wing_right/_7_qbar-psf</property>
+				<property>T4T/aero/wing_right/_8_qbar-psf</property>
+			</avg>
+		</function>	
+	</fcs_function>
+
+	<!-- ####   tail   #### -->
+	
+	<fcs_function name="T4T/aero/v-stab/qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/v-stab/true-fps</property>
+				<property>T4T/velocities/v-stab/true-fps</property>
+			</product>
+		</function>
+	</fcs_function>	
+	
+
+	<fcs_function name="T4T/aero/h-stab_left/qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/h-stab_left/true-fps</property>
+				<property>T4T/velocities/h-stab_left/true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/h-stab_right/qbar-psf">
+		<function>
+			<product>
+				<value> 0.5 </value>
+				<property>atmosphere/rho-slugs_ft3</property> 
+				<property>T4T/velocities/h-stab_right/true-fps</property>
+				<property>T4T/velocities/h-stab_right/true-fps</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/aero/h-stab/qbar-psf">
+		<function>
+			<avg>
+				<property>T4T/aero/h-stab_left/qbar-psf</property> 	
+				<property>T4T/aero/h-stab_right/qbar-psf</property> 
+			</avg>
+		</function>
+	</fcs_function>
+	
+	</channel>
+
+	<channel name="Normal-force">
+
+	<!-- #### normal vector #### -->
+	<!-- ####   left   #### -->
+	
+    <pure_gain name="T4T/forces/wing_left/_1_normal-lbs">
+		<input>T4T/coefficients/wing_left/_1_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_1_qbar-psf</gain>
+    </pure_gain>	
+
+    <pure_gain name="T4T/forces/wing_left/_2_normal-lbs">
+		<input>T4T/coefficients/wing_left/_2_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_2_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_3_normal-lbs">
+		<input>T4T/coefficients/wing_left/_3_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_3_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_4_normal-lbs">
+		<input>T4T/coefficients/wing_left/_4_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_4_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_5_normal-lbs">
+		<input>T4T/coefficients/wing_left/_5_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_5_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_6_normal-lbs">
+		<input>T4T/coefficients/wing_left/_6_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_6_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_7_normal-lbs">
+		<input>T4T/coefficients/wing_left/_7_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_7_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_8_normal-lbs">
+		<input>T4T/coefficients/wing_left/_8_CN-sqft</input>
+		<gain>T4T/aero/wing_left/_8_qbar-psf</gain>
+    </pure_gain>
+
+	<!-- ####   right   #### -->
+
+    <pure_gain name="T4T/forces/wing_right/_1_normal-lbs">
+		<input>T4T/coefficients/wing_right/_1_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_1_qbar-psf</gain>
+    </pure_gain>	
+
+    <pure_gain name="T4T/forces/wing_right/_2_normal-lbs">
+		<input>T4T/coefficients/wing_right/_2_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_2_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_3_normal-lbs">
+		<input>T4T/coefficients/wing_right/_3_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_3_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_4_normal-lbs">
+		<input>T4T/coefficients/wing_right/_4_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_4_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_5_normal-lbs">
+		<input>T4T/coefficients/wing_right/_5_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_5_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_6_normal-lbs">
+		<input>T4T/coefficients/wing_right/_6_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_6_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_7_normal-lbs">
+		<input>T4T/coefficients/wing_right/_7_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_7_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_8_normal-lbs">
+		<input>T4T/coefficients/wing_right/_8_CN-sqft</input>
+		<gain>T4T/aero/wing_right/_8_qbar-psf</gain>
+    </pure_gain>
+
+
+	<!-- ####   tail   #### -->
+	
+    <pure_gain name="T4T/forces/h-stab_left/normal-lbs">
+		<input>T4T/coefficients/h-stab_left/CN-sqft</input>
+		<gain>T4T/aero/h-stab_left/qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/h-stab_right/normal-lbs">
+		<input>T4T/coefficients/h-stab_right/CN-sqft</input>
+		<gain>T4T/aero/h-stab_right/qbar-psf</gain>
+    </pure_gain>
+
+    <pure_gain name="T4T/forces/v-stab/normal-lbs">
+		<input>-T4T/coefficients/v-stab/CN-sqft</input>
+		<gain>T4T/aero/v-stab/qbar-psf</gain>
+    </pure_gain>	
+
+	</channel>	
+
+	<channel name="Axial-force">
+		
+    <pure_gain name="T4T/forces/wing_left/_1_axial-lbs">
+		<input>T4T/coefficients/wing_left/_1_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_1_qbar-psf</gain>
+    </pure_gain>
+
+    <pure_gain name="T4T/forces/wing_left/_2_axial-lbs">
+		<input>T4T/coefficients/wing_left/_2_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_2_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_3_axial-lbs">
+		<input>T4T/coefficients/wing_left/_3_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_3_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_4_axial-lbs">
+		<input>T4T/coefficients/wing_left/_4_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_4_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_5_axial-lbs">
+		<input>T4T/coefficients/wing_left/_5_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_5_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_6_axial-lbs">
+		<input>T4T/coefficients/wing_left/_6_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_6_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_7_axial-lbs">
+		<input>T4T/coefficients/wing_left/_7_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_7_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_left/_8_axial-lbs">
+		<input>T4T/coefficients/wing_left/_8_CA-sqft</input>
+		<gain>T4T/aero/wing_left/_8_qbar-psf</gain>
+    </pure_gain>
+
+	<!-- ####   right   #### -->
+	
+    <pure_gain name="T4T/forces/wing_right/_1_axial-lbs">
+		<input>T4T/coefficients/wing_right/_1_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_1_qbar-psf</gain>
+    </pure_gain>
+
+    <pure_gain name="T4T/forces/wing_right/_2_axial-lbs">
+		<input>T4T/coefficients/wing_right/_2_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_2_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_3_axial-lbs">
+		<input>T4T/coefficients/wing_right/_3_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_3_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_4_axial-lbs">
+		<input>T4T/coefficients/wing_right/_4_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_4_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_5_axial-lbs">
+		<input>T4T/coefficients/wing_right/_5_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_5_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_6_axial-lbs">
+		<input>T4T/coefficients/wing_right/_6_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_6_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_7_axial-lbs">
+		<input>T4T/coefficients/wing_right/_7_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_7_qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/wing_right/_8_axial-lbs">
+		<input>T4T/coefficients/wing_right/_8_CA-sqft</input>
+		<gain>T4T/aero/wing_right/_8_qbar-psf</gain>
+    </pure_gain>
+	
+	<!-- ####   tail   #### -->
+	
+    <pure_gain name="T4T/forces/h-stab_left/axial-lbs">
+		<input>T4T/coefficients/h-stab_left/CA-sqft</input>
+		<gain>T4T/aero/h-stab_left/qbar-psf</gain>
+    </pure_gain>
+	
+    <pure_gain name="T4T/forces/h-stab_right/axial-lbs">
+		<input>T4T/coefficients/h-stab_right/CA-sqft</input>
+		<gain>T4T/aero/h-stab_right/qbar-psf</gain>
+    </pure_gain>
+
+    <pure_gain name="T4T/forces/v-stab/axial-lbs">
+		<input>T4T/coefficients/v-stab/CA-sqft</input>
+		<gain>T4T/aero/v-stab/qbar-psf</gain>
+    </pure_gain>
+
+	</channel>	
+	
+	<channel name="Z-vector">
+
+	<!-- #### normal vector #### -->
+	<!-- ####   left   #### -->
+
+	<fcs_function name="T4T/forces/wing_left/_1_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_1_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_1_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_1_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_1_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_1_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_2_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_2_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_2_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_2_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_2_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_2_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_3_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_3_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_3_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_3_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_3_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_3_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_4_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_4_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_4_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_4_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_4_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_4_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_5_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_5_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_5_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_5_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_5_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_5_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_6_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_6_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_6_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_6_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_6_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_6_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_7_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_7_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_7_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_left/_7_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_7_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_7_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_8_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_left/_8_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_left/_8_dihedral-rad</property></cos>operty>
+					<property>T4T/forces/wing_left/_8_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_left/_8_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_8_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+
+		
+
+	<!-- ####   right   #### -->
+
+	<fcs_function name="T4T/forces/wing_right/_1_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_1_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_1_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_1_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_1_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_1_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_2_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_2_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_2_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_2_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_2_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_2_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_3_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_3_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_3_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_3_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_3_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_3_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_4_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_4_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_4_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_4_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_4_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_4_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_5_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_5_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_5_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_5_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_5_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_5_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_6_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_6_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_6_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_6_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_6_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_6_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_7_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_7_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_7_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_7_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_7_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_7_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_8_z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/aero/wing_right/_8_rigging-rad</property></cos>
+					<cos><property>T4T/aero/wing_right/_8_dihedral-rad</property></cos>
+					<property>T4T/forces/wing_right/_8_normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/aero/wing_right/_8_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_8_axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>
+
+
+	<!-- ####   tail   #### -->
+	
+	<fcs_function name="T4T/forces/h-stab_left/z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/structure/h-stab/rigging-rad</property></cos>
+					<cos><property>T4T/structure/h-stab/dihedral-rad</property></cos>
+					<property>T4T/forces/h-stab_left/normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/structure/h-stab/rigging-rad</property></sin>
+					<property>T4T/forces/h-stab_left/axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>	
+
+	<fcs_function name="T4T/forces/h-stab_right/z-lbs">
+		<function>
+			<difference>
+				<product>
+					<cos><property>T4T/structure/h-stab/rigging-rad</property></cos>
+					<cos><property>T4T/structure/h-stab/dihedral-rad</property></cos>
+					<property>T4T/forces/h-stab_right/normal-lbs</property>
+				</product>
+				<product>
+					<sin><property>T4T/structure/h-stab/rigging-rad</property></sin>
+					<property>T4T/forces/h-stab_right/axial-lbs</property>
+				</product>
+			</difference>
+		</function>
+	</fcs_function>		
+
+	</channel>
+
+	<channel name="Y-vector">
+
+	<!-- #### y vector #### -->		
+	<!-- ####   left   #### -->
+
+
+	<fcs_function name="T4T/forces/wing_left/_1_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_1_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_1_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_2_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_2_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_2_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_3_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_3_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_3_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_4_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_4_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_4_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_5_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_5_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_5_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_6_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_6_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_6_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_7_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_7_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_7_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_left/_8_y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/aero/wing_left/_8_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_left/_8_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>		
+	
+	<!-- ####   right   #### -->	
+	
+	<fcs_function name="T4T/forces/wing_right/_1_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_1_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_1_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_2_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_2_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_2_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_3_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_3_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_3_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_4_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_4_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_4_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_5_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_5_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_5_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_6_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_6_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_6_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_7_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_7_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_7_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/wing_right/_8_y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/aero/wing_right/_8_dihedral-rad</property></sin>
+				<property>T4T/forces/wing_right/_8_normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	
+	<!-- ####   tail   #### -->
+	
+	<fcs_function name="T4T/forces/h-stab_left/y-lbs">
+		<function>
+			<product>
+				<sin><property>T4T/structure/h-stab/dihedral-rad</property></sin>
+				<property>T4T/forces/h-stab_left/normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_right/y-lbs">
+		<function>
+			<product>
+				<v> -1 </v>
+				<sin><property>T4T/structure/h-stab/dihedral-rad</property></sin>
+				<property>T4T/forces/h-stab_right/normal-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	</channel>
+		
+	<channel name="X-vector">
+		
+	<fcs_function name="T4T/aero/alpha-sin">
+		<function>
+			<sin><property>aero/alpha-rad</property></sin>
+		</function>
+	</fcs_function>
+
+	<!-- ####   left   #### -->
+	
+	<fcs_function name="T4T/forces/wing_left/_1_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_1_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_1_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_1_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_1_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>	
+		
+	<fcs_function name="T4T/forces/wing_left/_2_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_2_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_2_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_2_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_2_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_3_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_3_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_3_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_3_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_3_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_4_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_4_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_4_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_4_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_4_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_5_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_5_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_5_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_5_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_5_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_6_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_6_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_6_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_6_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_6_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_7_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_7_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_7_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_7_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_7_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/_8_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_left/_8_rigging-rad</property></sin>
+					<property>T4T/forces/wing_left/_8_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_left/_8_rigging-rad</property></cos>
+					<property>T4T/forces/wing_left/_8_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+
+	
+
+	<!-- ####   right   #### -->
+
+ 	<fcs_function name="T4T/forces/wing_right/_1_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_1_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_1_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_1_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_1_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>	
+		
+	<fcs_function name="T4T/forces/wing_right/_2_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_2_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_2_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_2_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_2_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_3_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_3_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_3_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_3_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_3_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_4_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_4_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_4_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_4_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_4_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_5_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_5_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_5_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_5_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_5_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_6_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_6_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_6_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_6_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_6_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_7_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_7_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_7_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_7_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_7_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/_8_x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/aero/wing_right/_8_rigging-rad</property></sin>
+					<property>T4T/forces/wing_right/_8_normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/aero/wing_right/_8_rigging-rad</property></cos>
+					<property>T4T/forces/wing_right/_8_axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>  
+
+	<!-- ####   tail   #### -->
+	
+	<fcs_function name="T4T/forces/h-stab_left/x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/structure/h-stab/rigging-rad</property></sin>
+					<property>T4T/forces/h-stab_left/normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/structure/h-stab/rigging-rad</property></cos>
+					<property>T4T/forces/h-stab_left/axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function> 
+	
+	<fcs_function name="T4T/forces/h-stab_right/x-lbs">
+		<function>
+			<sum>
+				<product>
+					<sin><property>T4T/structure/h-stab/rigging-rad</property></sin>
+					<property>T4T/forces/h-stab_right/normal-lbs</property>
+				</product>
+				<product>
+					<cos><property>T4T/structure/h-stab/rigging-rad</property></cos>
+					<property>T4T/forces/h-stab_right/axial-lbs</property>
+				</product>
+			</sum>
+		</function>
+	</fcs_function>
+	
+	</channel>
+	
+	<channel name="Totals">
+
+	<!-- ####   Z-vector   #### -->
+
+	<summer>
+		<input>T4T/forces/wing_left/_1_z-lbs</input>
+		<input>T4T/forces/wing_left/_2_z-lbs</input>
+		<input>T4T/forces/wing_left/_3_z-lbs</input>
+		<input>T4T/forces/wing_left/_4_z-lbs</input>
+		<input>T4T/forces/wing_left/_5_z-lbs</input>
+		<input>T4T/forces/wing_left/_6_z-lbs</input>
+		<input>T4T/forces/wing_left/_7_z-lbs</input>
+		<input>T4T/forces/wing_left/_8_z-lbs</input>
+		<output>T4T/forces/wing_left/z-lbs</output>
+	</summer>
+				
+	<summer>
+		<input>T4T/forces/wing_left/_1_z-lbs</input>
+		<input>T4T/forces/wing_left/_2_z-lbs</input>
+		<input>T4T/forces/wing_left/_3_z-lbs</input>
+		<input>T4T/forces/wing_left/_4_z-lbs</input>
+		<output>T4T/forces/wing_left/inner_z-lbs</output>
+	</summer>
+	
+	<summer>
+		<input>T4T/forces/wing_left/_5_z-lbs</input>
+		<input>T4T/forces/wing_left/_6_z-lbs</input>
+		<input>T4T/forces/wing_left/_7_z-lbs</input>
+		<input>T4T/forces/wing_left/_8_z-lbs</input>
+		<output>T4T/forces/wing_left/outer_z-lbs</output>
+	</summer>
+
+	<summer>
+		<input>T4T/forces/wing_right/_1_z-lbs</input>
+		<input>T4T/forces/wing_right/_2_z-lbs</input>
+		<input>T4T/forces/wing_right/_3_z-lbs</input>
+		<input>T4T/forces/wing_right/_4_z-lbs</input>
+		<input>T4T/forces/wing_right/_5_z-lbs</input>
+		<input>T4T/forces/wing_right/_6_z-lbs</input>
+		<input>T4T/forces/wing_right/_7_z-lbs</input>
+		<input>T4T/forces/wing_right/_8_z-lbs</input>
+		<output>T4T/forces/wing_right/z-lbs</output>		
+	</summer>
+		
+	<summer>
+		<input>T4T/forces/wing_right/_1_z-lbs</input>
+		<input>T4T/forces/wing_right/_2_z-lbs</input>
+		<input>T4T/forces/wing_right/_3_z-lbs</input>
+		<input>T4T/forces/wing_right/_4_z-lbs</input>
+		<output>T4T/forces/wing_right/inner_z-lbs</output>
+	</summer>
+	
+	<summer>
+		<input>T4T/forces/wing_right/_5_z-lbs</input>
+		<input>T4T/forces/wing_right/_6_z-lbs</input>
+		<input>T4T/forces/wing_right/_7_z-lbs</input>
+		<input>T4T/forces/wing_right/_8_z-lbs</input>
+		<output>T4T/forces/wing_right/outer_z-lbs</output>
+	</summer>
+	
+	<!-- ####   Wings   #### -->	
+			
+	<fcs_function name="T4T/forces/wings/z">
+		<function>
+			<sum>
+				<property>T4T/forces/wing_left/z-lbs</property>
+				<property>T4T/forces/wing_right/z-lbs</property>				
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<switch>
+		<default value="1"/>
+		<test value="-1">
+			T4T/forces/wings/z LT 0
+		</test>
+		<output>T4T/forces/wings/direction</output>
+	</switch>
+	
+	<fcs_function name="T4T/forces/wings/z-lbs">
+		<function>
+			<product>
+				<property>T4T/forces/wings/direction</property>
+				<sum>
+					<abs><property>T4T/forces/wing_left/z-lbs</property></abs>
+					<abs><property>T4T/forces/wing_right/z-lbs</property></abs>			
+				</sum>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<!-- ####   Tail   #### -->	
+	
+	<fcs_function name="T4T/forces/tail/z">
+		<function>
+			<sum>
+				<property>T4T/forces/h-stab_left/z-lbs</property>
+				<property>T4T/forces/h-stab_right/z-lbs</property>				
+			</sum>
+		</function>
+	</fcs_function>
+	
+	<switch>
+		<default value="1"/>
+		<test value="-1">
+			T4T/forces/tail/z LT 0
+		</test>
+		<output>T4T/forces/tail/direction</output>
+	</switch>
+	
+	<fcs_function name="T4T/forces/tail/z-lbs">
+		<function>
+			<product>
+				<property>T4T/forces/tail/direction</property>
+				<sum>
+					<abs><property>T4T/forces/h-stab_left/z-lbs</property></abs>
+					<abs><property>T4T/forces/h-stab_right/z-lbs</property></abs>			
+				</sum>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<summer name="T4T/forces/Z-lbs">
+		<input>T4T/forces/wings/z-lbs</input>	
+		<input>T4T/forces/tail/z-lbs</input>	
+	</summer>	
+
+	<!-- ####   Y-vector   #### -->	
+
+	<summer name="T4T/forces/wing_left/y-lbs">
+		<input>T4T/forces/wing_left/_1_y-lbs</input>
+		<input>T4T/forces/wing_left/_2_y-lbs</input>
+		<input>T4T/forces/wing_left/_3_y-lbs</input>
+		<input>T4T/forces/wing_left/_4_y-lbs</input>
+		<input>T4T/forces/wing_left/_5_y-lbs</input>
+		<input>T4T/forces/wing_left/_6_y-lbs</input>
+		<input>T4T/forces/wing_left/_7_y-lbs</input>
+		<input>T4T/forces/wing_left/_8_y-lbs</input>
+	</summer>
+	
+	<summer name="T4T/forces/wing_right/y-lbs">
+		<input>T4T/forces/wing_right/_1_y-lbs</input>
+		<input>T4T/forces/wing_right/_2_y-lbs</input>
+		<input>T4T/forces/wing_right/_3_y-lbs</input>
+		<input>T4T/forces/wing_right/_4_y-lbs</input>
+		<input>T4T/forces/wing_right/_5_y-lbs</input>
+		<input>T4T/forces/wing_right/_6_y-lbs</input>
+		<input>T4T/forces/wing_right/_7_y-lbs</input>
+		<input>T4T/forces/wing_right/_8_y-lbs</input>
+	</summer>
+
+	<summer name="T4T/forces/wings/y-lbs">
+		<input>T4T/forces/wing_left/y-lbs</input>
+		<input>T4T/forces/wing_right/y-lbs</input>
+	</summer>
+
+	<summer name="T4T/forces/tail/y-lbs">
+		<input>T4T/forces/h-stab_left/y-lbs</input>
+		<input>T4T/forces/h-stab_right/y-lbs</input>	
+		<input>T4T/forces/v-stab/normal-lbs</input>		
+	</summer>	
+
+	<summer name="T4T/forces/Y-lbs">
+		<input>T4T/forces/wings/y-lbs</input>	
+		<input>T4T/forces/tail/y-lbs</input>	
+	</summer>
+
+	<!-- ####   X-vector   #### -->	
+
+	<summer name="T4T/forces/wing_left/x-lbs">
+		<input>T4T/forces/wing_left/_1_x-lbs</input>
+		<input>T4T/forces/wing_left/_2_x-lbs</input>
+		<input>T4T/forces/wing_left/_3_x-lbs</input>
+		<input>T4T/forces/wing_left/_4_x-lbs</input>
+		<input>T4T/forces/wing_left/_5_x-lbs</input>
+		<input>T4T/forces/wing_left/_6_x-lbs</input>
+		<input>T4T/forces/wing_left/_7_x-lbs</input>
+		<input>T4T/forces/wing_left/_8_x-lbs</input>
+	</summer>
+	
+	<summer name="T4T/forces/wing_right/x-lbs">
+		<input>T4T/forces/wing_right/_1_x-lbs</input>
+		<input>T4T/forces/wing_right/_2_x-lbs</input>
+		<input>T4T/forces/wing_right/_3_x-lbs</input>
+		<input>T4T/forces/wing_right/_4_x-lbs</input>
+		<input>T4T/forces/wing_right/_5_x-lbs</input>
+		<input>T4T/forces/wing_right/_6_x-lbs</input>
+		<input>T4T/forces/wing_right/_7_x-lbs</input>
+		<input>T4T/forces/wing_right/_8_x-lbs</input>
+	</summer>
+
+	<summer name="T4T/forces/wings/x-lbs">
+		<input>T4T/forces/wing_left/x-lbs</input>
+		<input>T4T/forces/wing_right/x-lbs</input>
+	</summer>
+
+	<summer name="T4T/forces/tail/x-lbs">
+		<input>T4T/forces/h-stab_left/x-lbs</input>
+		<input>T4T/forces/h-stab_right/x-lbs</input>
+		<input>T4T/forces/v-stab/axial-lbs</input>
+	</summer>
+
+	<summer name="T4T/forces/X-lbs">
+		<input>T4T/forces/wings/x-lbs</input>
+		<input>T4T/forces/tail/x-lbs</input>
+	</summer>
+	
+	</channel>
+
+	<channel name="Drag-force">
+	
+	<fcs_function>
+		<function>
+		<description>ground effect on induced drag</description>			
+			<table>
+				<independentVar>aero/h_b-mac-ft</independentVar>
+				<tableData>
+				0		0.0
+				0.1		0.5
+				0.2		0.7
+				0.3		0.8
+				0.4		0.87
+				0.5		0.92
+				0.6		0.94
+				0.7		0.96
+				0.8		0.97
+				0.9		0.98
+				1.0		0.99
+				1.1		1.0
+				</tableData>
+			</table>
+		</function>
+		<output>T4T/coefficients/kCdge</output>
+	</fcs_function>		
+
+	<switch>
+		<default value="1"/>
+		<test value="T4T/coefficients/kCdge">
+			T4T/metrics/ground_effect GE 1
+		</test>
+		<output>T4T/coefficients/kCdge</output>
+	</switch>
+
+	
+	<!-- ####   left wing  #### -->
+
+				
+	<fcs_function name="T4T/coefficients/wing_left/Cl_inner">
+		<function>
+			<quotient>
+				<product>
+					<property>T4T/aero/alpha-cos</property>					
+					<sum>
+						<abs><property>T4T/forces/wing_left/_1_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_2_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_3_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_4_z-lbs</property></abs>
+					</sum>
+				</product>					
+				<product>
+					<property>T4T/metrics/wing_inner-sqft</property>
+					<property>T4T/aero/wing_left/_2_qbar-psf</property>
+				</product>
+			</quotient>				
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/coefficients/wing_left/Cl_outer">
+		<function>		
+			<quotient>
+				<product>
+					<property>T4T/aero/alpha-cos</property>					
+					<sum>
+						<abs><property>T4T/forces/wing_left/_5_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_6_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_7_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_left/_8_z-lbs</property></abs>
+					</sum>
+				</product>					
+				<product>
+					<property>T4T/metrics/wing_outer-sqft</property>
+					<property>T4T/aero/wing_left/_6_qbar-psf</property>
+				</product>
+			</quotient>				
+		</function>
+	</fcs_function>	
+	
+	<fcs_function name="T4T/coefficients/wing_left/Cdi_inner">
+		<function>
+		<description>Cdi of the left inner wing</description>
+			<quotient>							
+				<pow>
+					<property>T4T/coefficients/wing_left/Cl_inner</property>
+					<value> 2 </value>
+				</pow>
+				<property>T4T/aero/wing_efficiency</property><!-- efficiency value * pi * apect ratio -->
+			</quotient>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/coefficients/wing_left/Cdi_outer">
+		<function>
+		<description>Cdi of the left outer wing</description>
+			<quotient>							
+				<pow>
+					<property>T4T/coefficients/wing_left/Cl_outer</property>
+					<value> 2 </value>
+				</pow>
+				<property>T4T/aero/wing_efficiency</property><!-- efficiency value * pi * apect ratio -->
+			</quotient>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/drag_vortex_inner-lbs">
+		<function>
+		<description>Induced drag from the left inner wing</description>
+			<product><!-- http://www.grc.nasa.gov/WWW/K-12/airplane/induced_html -->				
+				<property>T4T/coefficients/kCdge</property> <!-- ground effect -->						
+				<property>T4T/coefficients/wing_left/Cdi_inner</property>				
+				<property>T4T/aero/wing_left/_2_qbar-psf</property>
+				<property>T4T/metrics/wing_inner-sqft</property> <!-- Area of left inner wing -->
+			</product>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/drag_vortex_outer-lbs">
+		<function>
+		<description>Induced drag from the left outer wing</description>
+			<product><!-- http://www.grc.nasa.gov/WWW/K-12/airplane/induced_html -->				
+				<property>T4T/coefficients/kCdge</property> <!-- ground effect -->						
+				<property>T4T/coefficients/wing_left/Cdi_outer</property>				
+				<property>T4T/aero/wing_left/_6_qbar-psf</property>
+				<property>T4T/metrics/wing_outer-sqft</property> <!-- Area of left outer wing -->
+			</product>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/drag_aileron-lbs">
+		<function>
+		<description>form drag from the left wing aileron</description>
+			<product>		
+				<sin><property>fcs/aileron-left-pos-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/wing_left/_6_qbar-psf</property> <!-- dynamic pressure on the wing -->
+				<property>T4T/metrics/aileron-sqft</property> <!-- Area of left wing aileron -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_left/drag_flap-lbs">
+		<function>
+		<description>form drag from the left wing flap</description>		
+			<product>
+				<sin><property>fcs/wing_left/flap-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/wing_left/_2_qbar-psf</property> <!-- dynamic pressure on the wing -->
+				<property>T4T/metrics/flap-sqft</property> <!-- Area of left wing flap -->
+			</product>
+		</function>
+	</fcs_function>	
+	
+		
+	
+	<!-- ####   right wing  #### -->
+
+				
+	<fcs_function name="T4T/coefficients/wing_right/Cl_inner">
+		<function>
+			<quotient>
+				<product>
+					<property>T4T/aero/alpha-cos</property>					
+					<sum>
+						<abs><property>T4T/forces/wing_right/_1_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_2_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_3_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_4_z-lbs</property></abs>
+					</sum>
+				</product>					
+				<product>
+					<property>T4T/metrics/wing_inner-sqft</property>
+					<property>T4T/aero/wing_right/_2_qbar-psf</property>
+				</product>
+			</quotient>				
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/coefficients/wing_right/Cl_outer">
+		<function>		
+			<quotient>
+				<product>
+					<property>T4T/aero/alpha-cos</property>					
+					<sum>
+						<abs><property>T4T/forces/wing_right/_5_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_6_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_7_z-lbs</property></abs>
+						<abs><property>T4T/forces/wing_right/_8_z-lbs</property></abs>
+					</sum>
+				</product>					
+				<product>
+					<property>T4T/metrics/wing_outer-sqft</property>
+					<property>T4T/aero/wing_right/_6_qbar-psf</property>
+				</product>
+			</quotient>				
+		</function>
+	</fcs_function>	
+	
+	<fcs_function name="T4T/coefficients/wing_right/Cdi_inner">
+		<function>
+		<description>Cdi of the right inner wing</description>
+			<quotient>							
+				<pow>
+					<property>T4T/coefficients/wing_right/Cl_inner</property>
+					<value> 2 </value>
+				</pow>
+				<property>T4T/aero/wing_efficiency</property><!-- efficiency value * pi * apect ratio -->
+			</quotient>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/coefficients/wing_right/Cdi_outer">
+		<function>
+		<description>Cdi of the right outer wing</description>
+			<quotient>							
+				<pow>
+					<property>T4T/coefficients/wing_right/Cl_outer</property>
+					<value> 2 </value>
+				</pow>
+				<property>T4T/aero/wing_efficiency</property><!-- efficiency value * pi * apect ratio -->
+			</quotient>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/drag_vortex_inner-lbs">
+		<function>
+		<description>Induced drag from the right inner wing</description>
+			<product><!-- http://www.grc.nasa.gov/WWW/K-12/airplane/induced_html -->				
+				<property>T4T/coefficients/kCdge</property> <!-- ground effect -->						
+				<property>T4T/coefficients/wing_right/Cdi_inner</property>				
+				<property>T4T/aero/wing_right/_2_qbar-psf</property>
+				<property>T4T/metrics/wing_inner-sqft</property> <!-- Area of right inner wing -->
+			</product>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/drag_vortex_outer-lbs">
+		<function>
+		<description>Induced drag from the right outer wing</description>
+			<product><!-- http://www.grc.nasa.gov/WWW/K-12/airplane/induced_html -->				
+				<property>T4T/coefficients/kCdge</property> <!-- ground effect -->						
+				<property>T4T/coefficients/wing_right/Cdi_outer</property>				
+				<property>T4T/aero/wing_right/_6_qbar-psf</property>
+				<property>T4T/metrics/wing_outer-sqft</property> <!-- Area of right outer wing -->
+			</product>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/drag_aileron-lbs">
+		<function>
+		<description>form drag from the right wing aileron</description>
+			<product>		
+				<sin><property>fcs/aileron-right-pos-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/wing_right/_6_qbar-psf</property> <!-- dynamic pressure on the wing -->
+				<property>T4T/metrics/aileron-sqft</property> <!-- Area of right wing aileron -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/drag_flap-lbs">
+		<function>
+		<description>form drag from the right wing flap</description>		
+			<product>
+				<sin><property>fcs/wing_right/flap-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/wing_right/_2_qbar-psf</property> <!-- dynamic pressure on the wing -->
+				<property>T4T/metrics/flap-sqft</property> <!-- Area of right wing flap -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/drag_aileron_trim-lbs">
+		<function>
+		<description>form drag from the right wing aileron trim</description>
+			<product>
+				<sin><property>fcs/aileron-trim-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/wing_right/_5_qbar-psf</property> <!-- dynamic pressure on the wing -->
+				<property>T4T/metrics/aileron_trim-sqft</property> <!-- Area of right wing aileron trim-->
+			</product>
+		</function>
+	</fcs_function>
+	
+	
+	<!-- ####   h-stab   #### -->
+	
+	<fcs_function name="T4T/coefficients/h-stab/Cl">
+		<function>
+			<product>
+				<property>T4T/aero/alpha-cos</property>				
+				<quotient name="T4T/coefficients/h-stab/CN">
+					<property>T4T/forces/tail/z-lbs</property>
+					<product>
+						<property>metrics/Sh-sqft</property>
+						<property>T4T/aero/h-stab_left/qbar-psf</property>
+					</product>
+				</quotient>
+			</product>				
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/coefficients/h-stab/Cdi">
+		<function>
+		<description>Cdi of the h-stab</description>
+			<quotient>							
+				<pow>
+					<property>T4T/coefficients/h-stab/Cl</property>
+					<value> 2 </value>
+				</pow>
+				<property>T4T/aero/h-stab_efficiency</property><!-- efficiency value * pi * apect ratio -->
+			</quotient>
+		</function>	
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab/drag_vortex-lbs">
+		<function>
+		<description>Induced drag from the h-stab</description>
+			<product><!-- http://www.grc.nasa.gov/WWW/K-12/airplane/induced_html -->				
+				<property>T4T/coefficients/kCdge</property> <!-- ground effect -->						
+				<property>T4T/coefficients/h-stab/Cdi</property>				
+				<property>T4T/aero/h-stab_left/qbar-psf</property>
+				<property>metrics/Sh-sqft</property>
+			</product>
+		</function>	
+	</fcs_function>
+	
+<!-- ####   elevator   #### -->
+
+	<fcs_function name="T4T/forces/h-stab_left/drag_elevator-lbs">
+		<function>
+		<description>form drag from the left elevator</description>
+			<product>		
+				<sin><property>fcs/elevator-left-pos-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/h-stab_left/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/elevator-sqft</property> <!-- Area of left elevator -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_left/drag_elevator_trim-lbs">
+		<function>
+		<description>form drag from the left h-stab elevator trim</description>
+			<product>
+				<sin><property>fcs/elevator-trim-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/h-stab_left/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/elevator_trim-sqft</property> <!-- Area of left h-stab elevator trim-->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_right/drag_elevator-lbs">
+		<function>
+		<description>form drag from the right elevator</description>
+			<product>		
+				<sin><property>fcs/elevator-right-pos-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/h-stab_right/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/elevator-sqft</property> <!-- Area of right elevator -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_right/drag_elevator_trim-lbs">
+		<function>
+		<description>form drag from the right h-stab elevator trim</description>
+			<product>
+				<sin><property>fcs/elevator-trim-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/h-stab_right/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/elevator_trim-sqft</property> <!-- Area of right h-stab elevator trim-->
+			</product>
+		</function>
+	</fcs_function>
+	
+<!-- ####   rudder   #### -->	
+	
+	<fcs_function name="T4T/forces/v-stab/drag_rudder-lbs">	
+		<function>
+		<description>form drag from the rudder</description>
+			<product>		
+				<sin><property>fcs/rudder-set-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/v-stab/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/rudder-sqft</property> <!-- Area of right elevator -->
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/v-stab/drag_rudder_trim-lbs">
+		<function>
+		<description>form drag from the rudder trim</description>
+			<product>
+				<sin><property>fcs/rudder-trim-rad</property></sin>
+				<property>T4T/coefficients/aileron-heaviness</property>
+				<property>T4T/aero/v-stab/qbar-psf</property> <!-- dynamic pressure on the elevator -->
+				<property>T4T/metrics/rudder_trim-sqft</property> <!-- Area of right h-stab elevator trim-->
+			</product>
+		</function>
+	</fcs_function>
+	
+		
+<!-- ####   fuselage   #### -->
+	
+	<fcs_function name="T4T/forces/fuselage/drag-lbs">
+		<function>
+			<sum>
+				<product name="T4T/forces/fuselage/front_drag-lbs">
+					<abs><property>T4T/aero/alpha-cos</property></abs>					
+					<abs><property>T4T/aero/beta-cos</property></abs>
+					<property>T4T/metrics/front_drag-coefficient</property>
+					<property>T4T/metrics/fuselage_front-sqft</property>				
+					<property>aero/qbar-psf</property> <!-- dynamic pressure -->
+				</product>	
+				<product name="T4T/forces/fuselage/side_drag-lbs">
+					<abs><property>T4T/aero/beta-sin</property></abs>				
+					<property>T4T/metrics/side_drag-coefficient</property>
+					<property>T4T/metrics/fuselage_side-sqft</property>				
+					<property>aero/qbar-psf</property> <!-- dynamic pressure -->
+				</product>
+				<product name="T4T/forces/fuselage/plan_drag-lbs">			
+					<abs><property>T4T/aero/alpha-sin</property></abs>			
+					<property>T4T/metrics/plan_drag-coefficient</property>
+					<property>T4T/metrics/fuselage_plan-sqft</property>				
+					<property>aero/qbar-psf</property> <!-- dynamic pressure -->
+				</product>				
+			</sum>				
+		</function>
+	</fcs_function>
+
+<!-- ####   gear   #### -->
+
+	<switch name="T4T/forces/gear/up">
+		<default value="1"/>
+		<test value="0">
+			gear/unit[0]/pos-norm LT 0.1
+		</test>
+		<output> T4T/forces/gear/up </output>
+	</switch>
+	
+	<fcs_function name="T4T/forces/gear/drag-lbs">
+		<function>
+			<sum>
+				<product name="T4T/forces/gear/front_drag-lbs">
+					<abs><property>T4T/aero/alpha-cos</property></abs>					
+					<abs><property>T4T/aero/beta-cos</property></abs>
+					<value>1.0</value> <!-- drag coefficient -->
+					<property>T4T/metrics/gear_front-sqft</property>				
+					<property>aero/qbar-psf</property> 
+					<property>T4T/forces/gear/up</property>
+				</product>	
+				<product name="T4T/forces/gear/side_drag-lbs">
+					<abs><property>T4T/aero/beta-sin</property></abs>				
+					<value>1.28</value> <!-- drag coefficient -->
+					<property>T4T/metrics/gear_side-sqft</property>				
+					<property>aero/qbar-psf</property>
+					<property>T4T/forces/gear/up</property>				
+				</product>				
+			</sum>				
+		</function>
+	</fcs_function>	
+	
+	<!-- ####   compression   #### -->	
+	
+	<fcs_function name="T4T/forces/drag_compression-lbs">
+		<function>
+			<product>		
+				<table name="T4T/coefficients/compression">
+					<independentVar lookup="row">velocities/mach</independentVar>
+					<tableData>
+						0.69	0.0
+						0.7		0.0004
+						0.71	0.0009
+						0.72	0.0022
+						0.73	0.0038
+						0.74	0.0054
+						0.75	0.0075
+						0.76	0.0095
+						0.77	0.012
+						0.78	0.015
+						0.79	0.0185
+						0.8		0.022
+						0.81	0.026
+						0.82	0.031
+						0.83	0.038
+						0.84	0.053
+						0.85	0.082
+					</tableData>
+				</table>
+				<property>T4T/metrics/lift-sqft</property>
+				<property>aero/qbar-psf</property>
+			</product>
+		</function>
+	</fcs_function>	
+
+	<!-- ####   Drag-vector   #### -->
+	
+	<summer name="T4T/forces/drag-lbs">
+		<input>T4T/forces/wing_left/drag_vortex_inner-lbs</input>
+		<input>T4T/forces/wing_left/drag_vortex_outer-lbs</input>		
+		<input>T4T/forces/wing_left/drag_aileron-lbs</input>
+		<input>T4T/forces/wing_left/drag_flap-lbs</input>
+		<input>T4T/forces/wing_right/drag_vortex_inner-lbs</input>
+		<input>T4T/forces/wing_right/drag_vortex_outer-lbs</input>
+		<input>T4T/forces/wing_right/drag_aileron-lbs</input>
+		<input>T4T/forces/wing_right/drag_aileron_trim-lbs</input>
+		<input>T4T/forces/wing_right/drag_flap-lbs</input>
+		<input>T4T/forces/h-stab/drag_vortex-lbs</input>
+		<input>T4T/forces/h-stab_left/drag_elevator-lbs</input>
+		<input>T4T/forces/h-stab_left/drag_elevator_trim-lbs</input>
+		<input>T4T/forces/h-stab_right/drag_elevator-lbs</input>
+		<input>T4T/forces/v-stab/drag_rudder-lbs</input>
+		<input>T4T/forces/v-stab/drag_rudder_trim-lbs</input>
+		<input>T4T/forces/fuselage/drag-lbs</input>
+		<input>T4T/forces/gear/drag-lbs</input>
+		<input>T4T/forces/drag_compression-lbs</input>
+	</summer>
+	
+	</channel>
+		
+	<channel name="control surface forces">
+	
+	<fcs_function name="T4T/forces/wing_left/feedback_aileron-lbs">
+		<function>
+		<description>force feedback from the left wing aileron</description>
+			<product>
+				<sin><property>fcs/aileron-left-pos-rad</property></sin>
+				<property>T4T/forces/wing_left/drag_aileron-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/wing_right/feedback_aileron-lbs">
+		<function>
+		<description>force feedback from the right wing aileron</description>
+			<product>
+				<sin><property>fcs/aileron-right-pos-rad</property></sin>
+				<property>T4T/forces/wing_right/drag_aileron-lbs</property>
+			</product>
+		</function>
+	</fcs_function>	
+		
+	<fcs_function name="T4T/forces/wing/feedback_aileron_trim-lbs">
+		<function>
+		<description>force feedback from the right wing aileron trim</description>
+			<product>
+				<sin><property>fcs/aileron-trim-rad</property></sin>
+				<property>T4T/forces/wing_right/drag_aileron_trim-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/h-stab_left/feedback_elevator-lbs">
+		<function>
+		<description>force feedback from the left elevator</description>
+			<product>
+				<sin><property>fcs/elevator-left-pos-rad</property></sin>
+				<property>T4T/forces/h-stab_left/drag_elevator-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_left/feedback_elevator_trim-lbs">
+		<function>
+		<description>form drag from the left h-stab elevator trim</description>
+			<product>
+				<sin><property>fcs/elevator-trim-rad</property></sin>
+				<property>T4T/forces/h-stab_left/drag_elevator_trim-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_right/feedback_elevator-lbs">
+		<function>
+		<description>force feedback from the right elevator</description>
+			<product>
+				<sin><property>fcs/elevator-right-pos-rad</property></sin>
+				<property>T4T/forces/h-stab_right/drag_elevator-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/h-stab_right/feedback_elevator_trim-lbs">
+		<function>
+		<description>form drag from the right h-stab elevator trim</description>
+			<product>
+				<sin><property>fcs/elevator-trim-rad</property></sin>
+				<property>T4T/forces/h-stab_right/drag_elevator_trim-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/forces/v-stab/feedback_rudder-lbs">
+		<function>
+		<description>form drag from the rudder</description>
+			<product>
+				<sin><property>fcs/rudder-set-rad</property></sin>
+				<property>T4T/forces/v-stab/drag_rudder-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/v-stab/feedback_rudder_trim-lbs">
+		<function>
+		<description>form drag from the rudder trim</description>
+			<product>
+				<sin><property>fcs/rudder-trim-rad</property></sin>
+				<property>T4T/forces/v-stab/drag_rudder_trim-lbs</property>
+			</product>
+		</function>
+	</fcs_function>
+	
+	
+	</channel>
+	
+	<channel name="external_forces" execute="T4T/execute">
+
+	<fcs_function name="T4T/aero/wing_left_loading">
+		<function>
+        <description>left wing loading</description>
+			<quotient>
+				<property>T4T/forces/wing_left/z-lbs</property>
+				<property>T4T/metrics/wingload_max-lbs</property>
+			</quotient>
+		</function>
+	</fcs_function>
+
+	<fcs_function name="T4T/aero/wing_right_loading">
+		<function>
+        <description>right wing loading</description>
+			<quotient>
+				<property>T4T/forces/wing_right/z-lbs</property>
+				<property>T4T/metrics/wingload_max-lbs</property>
+			</quotient>
+		</function>
+	</fcs_function>
+	
+	<!-- ####   LIFT2DRAG   #### -->
+	
+	<fcs_function name="T4T/coefficients/Cl">
+		<function>
+			<quotient>
+				<difference name="T4T/forces/LIFT-lbs">
+					<product name="T4T/forces/wing/lift_component_of_Z-lbs">			
+						<property>T4T/aero/alpha-cos</property>					
+						<property>T4T/forces/Z-lbs</property>
+					</product>
+					<product name="T4T/forces/wing/lift_component_of_X-lbs">			
+						<property>T4T/aero/alpha-sin</property>					
+						<property>T4T/forces/X-lbs</property>
+					</product>
+				</difference>							
+				<product>
+					<property>T4T/metrics/lift-sqft</property>
+					<property>aero/qbar-psf</property>
+				</product>
+			</quotient>		
+		</function>
+	</fcs_function>	
+	
+	<fcs_function name="T4T/coefficients/Cd">
+		<function>
+			<quotient>
+				<sum name="T4T/forces/DRAG-lbs">
+					<property>T4T/forces/drag-lbs</property>
+					<product name="T4T/forces/wing/drag_component_of_Z-lbs">
+						<property>T4T/aero/alpha-sin</property>					
+						<property>T4T/forces/Z-lbs</property>
+					</product>					
+					<product name="T4T/forces/wing/drag_component_of_X-lbs">
+						<property>T4T/aero/alpha-cos</property>					
+						<property>T4T/forces/X-lbs</property>					
+					</product>
+				</sum>						
+				<product>
+					<property>T4T/metrics/lift-sqft</property>
+					<property>aero/qbar-psf</property>
+				</product>
+			</quotient>			
+		</function>
+	</fcs_function>
+	
+	<fcs_function name="T4T/forces/LIFT2DRAG">
+		<function>
+			<abs>
+				<quotient>
+					<property>T4T/forces/LIFT-lbs</property>
+					<property>T4T/forces/DRAG-lbs</property>
+				</quotient>
+			</abs>
+		</function>	
+	</fcs_function>
+	
+	
+	
+	<fcs_function name="T4T/coefficients/Cz">
+		<function>
+			<quotient>
+				<sum>
+					<property>T4T/forces/Z-lbs</property>
+					<product>
+						<property>T4T/aero/alpha-sin</property>					
+						<property>T4T/forces/drag-lbs</property>
+					</product>
+				</sum>						
+				<product>
+					<property>T4T/metrics/lift-sqft</property>
+					<property>aero/qbar-psf</property>
+				</product>
+			</quotient>			
+		</function>
+	</fcs_function>	
+	
+	
+	<fcs_function name="T4T/coefficients/Cx">
+		<function>
+			<quotient>
+				<sum>
+					<property>T4T/forces/X-lbs</property>
+					<product>
+						<property>T4T/aero/alpha-cos</property>					
+						<property>T4T/forces/drag-lbs</property>
+					</product>
+				</sum>						
+				<product>
+					<property>T4T/metrics/lift-sqft</property>
+					<property>aero/qbar-psf</property>
+				</product>
+			</quotient>			
+		</function>
+	</fcs_function>		
+	
+	
+	
+	<fcs_function name="T4T/forces/Z2X">
+		<function>
+			<abs>
+				<quotient>
+					<property>T4T/coefficients/Cz</property>
+					<property>T4T/coefficients/Cx</property>
+				</quotient>
+			</abs>
+		</function>	
+	</fcs_function>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- ####   wings   #### -->
+
+    <pure_gain>
+		<gain>1</gain>	
+		<input>-T4T/forces/wings/z-lbs</input>
+		<output>external_reactions/wings/z</output>		
+    </pure_gain>
+	
+    <pure_gain>
+		<gain>1</gain>	
+		<input>T4T/forces/wings/y-lbs</input>
+		<output>external_reactions/wings/y</output>		
+    </pure_gain>
+	
+    <pure_gain>
+		<gain>1</gain>	
+		<input>-T4T/forces/wings/x-lbs</input>
+		<output>external_reactions/wings/x</output>		
+    </pure_gain>
+
+	<!-- ####   tail   #### -->
+	
+	<pure_gain>
+		<gain>1</gain>
+		<input>-T4T/forces/tail/z-lbs</input>
+		<output>external_reactions/tail/z</output>
+	</pure_gain>
+
+	<pure_gain>
+		<gain>1</gain>
+		<input>T4T/forces/tail/y-lbs</input>
+		<output>external_reactions/tail/y</output>
+	</pure_gain>
+
+	<pure_gain>
+		<gain>1</gain>
+		<input>-T4T/forces/tail/x-lbs</input>	
+		<output>external_reactions/tail/x</output>
+	</pure_gain>
+	
+	<!-- ####   drag   #### -->
+	
+	<pure_gain>
+		<gain>1</gain>
+		<input>-T4T/forces/drag-lbs</input>	
+		<output>external_reactions/drag/x</output>
+	</pure_gain>
+
+	<!-- ####   precession[0]   #### -->
+
+	<pure_gain>
+		<gain>1</gain>
+		<input>propulsion/engine[0]/precession-y-lbs</input>
+		<output>external_reactions/precession[0]/y</output>
+	</pure_gain>
+	
+	<pure_gain>
+		<gain>1</gain>
+		<input>propulsion/engine[0]/precession-z-lbs</input>
+		<output>external_reactions/precession[0]/z</output>
+	</pure_gain>
+
+	</channel>
+
+</system>

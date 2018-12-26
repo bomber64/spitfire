@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<path>Aircraft/Spitfire/Models/boost.ac</path>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>boost-Needle1</object-name>
+		<property>/fdm/jsbsim/propulsion/engine[0]/map-inhg</property>
+		<interpolation>
+			<entry>
+				<ind>25</ind>
+				<dep>-45</dep>
+			</entry>
+			<entry>
+				<ind>30</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>35</ind>
+				<dep>45</dep>
+			</entry>
+			<entry>
+				<ind>40</ind>
+				<dep>90</dep>
+			</entry>
+			<entry>
+				<ind>45</ind>
+				<dep>135</dep>
+			</entry>
+			<entry>
+				<ind>50</ind>
+				<dep>180</dep>
+			</entry>
+			<entry>
+				<ind>65</ind>
+				<dep>225</dep>
+			</entry>
+			<entry>
+				<ind>67.5</ind>
+				<dep>247</dep>
+			</entry>			
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<condition>
+			<greater-than>
+				<property>/controls/lighting/panel-norm</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+		<emission>
+			<factor-prop>/controls/lighting/panel-norm</factor-prop>
+			<red>0.75</red>
+			<green>0.25</green>
+			<blue>0.25</blue>
+		</emission>
+	</animation>
+
+	<!-- *** LoD *** -->
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+</PropertyList>

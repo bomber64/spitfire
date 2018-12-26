@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+ Spitfire Mk.I Help File
+-->
+  <PropertyList> 
+  <help>
+   <title>Spitfire Mk.II</title>
+
+	<line>Engine Start</line>
+    <line>1. Select Magnetos On - } 2 times</line>
+    <line>2. Start the engine - s</line>
+    <line>3. Handbrake off - b (and shift b for on)</line>	
+	<line></line>
+	
+	<line>In Flight</line>
+    <line>1. Manual adjust prop pitch using - n and shift n (do keep it below 3000rpm)</line>
+    <line>2. plane will auto mixture (because I said so)</line>	
+	<line></line>
+
+	<line>Landing</line>
+    <line>1. Flaps down 30 degs - ] (not over 120mph and push the stick forward)</line>
+    <line>2. Flaps down 90 degs - ]] (push the stick fully forward !)</line>
+    <line>3. Flaps up - [ (full trottle and pray to God !)</line>
+    <line>4. For landing put the throttle to where it stops that anoying noise</line>
+    <line>5. DON'T FORGET TO LOWER THE LANDING GEAR ! </line>	
+	<line></line>	
+
+  </help>
+
+  </PropertyList>
