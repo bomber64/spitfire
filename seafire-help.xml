@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+  <PropertyList> 
+    <help> 
+      <title>Seafire IIIc</title>
+      <key> 
+        <name>Ctrl-B</name>
+        <desc>toggle Boost control cutout</desc>
+      </key>
+      <key> 
+        <name>d/D</name>
+        <desc>fold Door up/down</desc>
+      </key>
+      <key> 
+        <name>Ctrl-D</name>
+        <desc>toggle Door fold</desc>
+      </key>
+      <key> 
+        <name>f/F</name>
+        <desc>close/open canopy</desc>
+      </key>
+      <key> 
+        <name>Ctrl-F</name>
+        <desc>toggle wingFold</desc>
+      </key>
+      <key> 
+        <name>h/H</name>
+        <desc>radiator flap up/down</desc>
+      </key>
+      <key> 
+        <name>o/O</name>
+        <desc>lower hOok (cannot be raised)</desc>
+      </key>
+      <key> 
+        <name>k/K</name>
+        <desc>toggle gear warning Klaxon</desc>
+      </key>
+      <key> 
+        <name>u/U</name>
+        <desc>seat Up/down/</desc>
+      </key>
+      <key> 
+        <name>Ctrl-U</name>
+        <desc>seat default</desc>
+      </key>
+      <key> 
+        <name>m/M</name>
+        <desc>Mixture rich/weak</desc>
+      </key>
+      <key> 
+        <name>n/N</name>
+        <desc>propeller fine/coarse</desc>
+      </key>
+      <key> 
+        <name>I</name>
+        <desc>operate prIming pump</desc>
+      </key>
+      <key> 
+        <name>( )</name>
+        <desc>fuel cock left/right toggle</desc>
+      </key>
+      <key> 
+        <name>&lt;/&gt;</name>
+        <desc>rudder trim left/right</desc>
+      </key>
+      <key> 
+        <name>{ }</name>
+        <desc>mag switch left/right toggle</desc>
+      </key>
+      <line>Start Routine</line>
+      <line></line>
+      <line>1. turn both magnetos on</line>
+      <line>2. operate primer pump five times</line>
+      <line>3. increase throttle to one third</line>
+      <line>4. fire electric starter</line>
+      <line></line>
+      <line>Approach Procedure</line>
+	  <line></line>
+      <line>propeller pitch - fine (lever fully forward)</line>
+      <line>engine - fast tick-over</line>
+      <line>approach speed (full flaps): 80-85 kts IAS</line>
+      <line>touchdown speed: 70 kts IAS</line>
+    </help>
+  </PropertyList>
